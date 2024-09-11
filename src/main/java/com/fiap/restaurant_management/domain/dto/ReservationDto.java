@@ -1,4 +1,4 @@
-package com.fiap.restaurant_management.dto;
+package com.fiap.restaurant_management.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

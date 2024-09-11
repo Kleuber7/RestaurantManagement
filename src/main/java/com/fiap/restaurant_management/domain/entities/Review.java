@@ -1,4 +1,4 @@
-package com.fiap.restaurant_management.dto;
+package com.fiap.restaurant_management.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReviewDto {
+public class Review {
 
+    private Long reviewCode;
     private Double rating;
     private String comment;
+    private Integer restaurantCode;
+    private Integer customerCode;
+
 }

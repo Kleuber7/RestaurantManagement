@@ -1,5 +1,6 @@
-package com.fiap.restaurant_management.entities;
+package com.fiap.restaurant_management.domain.entities;
 
+import com.fiap.restaurant_management.domain.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +12,13 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReservationEntity {
+public class Reservation {
 
     private Long reservationCode;
-    private Integer numberOfPeople;
     private LocalDateTime reservationDate;
+    private Integer quantityOfPeople;
+    private Status status;
+    private Integer customerCode;
+    private Integer RestaurantCode;
+
 }

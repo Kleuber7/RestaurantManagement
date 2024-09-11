@@ -1,6 +1,5 @@
-package com.fiap.restaurant_management.entities;
+package com.fiap.restaurant_management.domain.dto;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,9 +11,8 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RestaurantEntity {
+public class RestaurantDto {
 
-    private Long restaurantCode;
     private String name;
     private String location;
     private String cuisineType;
