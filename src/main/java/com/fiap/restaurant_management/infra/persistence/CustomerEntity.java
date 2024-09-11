@@ -11,14 +11,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class CostumerEntity {
+public class CustomerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerCode;
     private String name;
     private String email;
-    private Integer phone;
+    private String phone;
     // falta implementar os relacionamentos
+
+
+    public CustomerEntity(String name, String email, String phone) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
 }

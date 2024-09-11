@@ -12,9 +12,13 @@ import lombok.NoArgsConstructor;
 public class Review {
 
     private Long reviewCode;
+
     private Double rating;
+
     private String comment;
+
     private Integer restaurantCode;
+
     private Integer customerCode;
 
 }

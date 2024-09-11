@@ -14,9 +14,14 @@ import java.time.LocalDateTime;
 public class Restaurant {
 
     private Long restaurantCode;
+
     private String name;
+
     private String location;
+
     private String cuisineType;
+
     private LocalDateTime openingHours;
+
     private Integer capacity;
 }

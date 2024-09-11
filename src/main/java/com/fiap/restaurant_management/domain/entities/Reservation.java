@@ -15,10 +15,15 @@ import java.time.LocalDateTime;
 public class Reservation {
 
     private Long reservationCode;
+
     private LocalDateTime reservationDate;
+
     private Integer quantityOfPeople;
+
     private Status status;
+
     private Integer customerCode;
+
     private Integer RestaurantCode;
 
 }
