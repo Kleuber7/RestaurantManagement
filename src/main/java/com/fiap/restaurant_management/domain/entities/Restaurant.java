@@ -1,5 +1,6 @@
 package com.fiap.restaurant_management.domain.entities;
 
+import com.fiap.restaurant_management.domain.valueobjects.OpeningHours;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class Restaurant {
 
     private String cuisineType;
 
-    private LocalDateTime openingHours = LocalDateTime.now();
+    private LocalDateTime openingHours = new OpeningHours(LocalDateTime.now()).getOpeningHours();
 
     private Integer capacity;
 
@@ -29,21 +30,12 @@ public class Restaurant {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
 
-        if(!isValidOpeningHours(openingHours)){
-            throw new IllegalArgumentException("It is not possible to make a reservation as it is outside opening hours");
-        }
-
-        // Fazer mais validações**************************************
-
         this.name = name;
         this.location = location;
         this.cuisineType = cuisineType;
         this.capacity = capacity;
     }
 
-    private boolean isValidOpeningHours(LocalDateTime openingHours){
-        int hour = openingHours.getHour();
-        return hour >= 6 && hour < 23;
-    }
+
 
 }
