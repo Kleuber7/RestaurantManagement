@@ -26,5 +26,4 @@ public class CustomerConfig {
         return new CustomerEntityMapper();
     }
 
-
 }

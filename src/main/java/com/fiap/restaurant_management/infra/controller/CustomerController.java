@@ -17,9 +17,9 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<CustomerDto> createCustomers(@RequestBody CustomerDto dto) {
-        Customer customer = createCustomer.registerCustomer(new Customer(dto.name(), dto.email(), dto.phone()));
+        Customer customerDomain = createCustomer.registerCustomer(new Customer(dto.name(), dto.email(), dto.phone()));
 
-        var customerDto = new CustomerDto(customer.getName(), customer.getEmail(), customer.getPhone());
+        var customerDto = new CustomerDto(customerDomain.getName(), customerDomain.getEmail(), customerDomain.getPhone());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(customerDto);
     }

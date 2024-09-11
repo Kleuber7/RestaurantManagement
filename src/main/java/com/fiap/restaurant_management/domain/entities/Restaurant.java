@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 public class Restaurant {
 
@@ -21,7 +19,31 @@ public class Restaurant {
 
     private String cuisineType;
 
-    private LocalDateTime openingHours;
+    private LocalDateTime openingHours = LocalDateTime.now();
 
     private Integer capacity;
+
+    public Restaurant(String name, String location, String cuisineType, Integer capacity) {
+
+        if( name == null || name.isEmpty() ){
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+
+        if(!isValidOpeningHours(openingHours)){
+            throw new IllegalArgumentException("It is not possible to make a reservation as it is outside opening hours");
+        }
+
+        // Fazer mais validações**************************************
+
+        this.name = name;
+        this.location = location;
+        this.cuisineType = cuisineType;
+        this.capacity = capacity;
+    }
+
+    private boolean isValidOpeningHours(LocalDateTime openingHours){
+        int hour = openingHours.getHour();
+        return hour >= 6 && hour < 23;
+    }
+
 }
