@@ -8,5 +8,5 @@ public interface ICustomerRepository {
 
     Customer registerCustomer(Customer customer);
 
-    List<Customer> listAllCustomers();
+
 }

@@ -12,8 +12,5 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         return null;
     }
 
-    @Override
-    public List<Customer> listAllCustomers() {
-        return List.of();
-    }
+
 }
