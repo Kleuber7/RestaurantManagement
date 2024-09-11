@@ -2,9 +2,9 @@ package com.fiap.restaurant_management.infra.controller;
 
 import com.fiap.restaurant_management.aplication.usecases.CreateCustomer;
 import com.fiap.restaurant_management.domain.entities.Customer;
+import com.fiap.restaurant_management.infra.dto.CustomerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

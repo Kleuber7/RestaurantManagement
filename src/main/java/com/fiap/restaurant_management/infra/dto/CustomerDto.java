@@ -1,4 +1,4 @@
-package com.fiap.restaurant_management.infra.controller;
+package com.fiap.restaurant_management.infra.dto;
 
 public record CustomerDto(
         String name,
