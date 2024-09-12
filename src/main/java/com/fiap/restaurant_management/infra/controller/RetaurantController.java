@@ -41,7 +41,7 @@ public class RetaurantController {
                 restaurantDomain.getCuisineType(),
                 restaurantDomain.getCapacity(),
                 restaurantDomain.getOpeningHours(),
-                restaurantDomain.getOpeningHours()
+                restaurantDomain.getClosingTime()
                 );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(restaurantDto);
