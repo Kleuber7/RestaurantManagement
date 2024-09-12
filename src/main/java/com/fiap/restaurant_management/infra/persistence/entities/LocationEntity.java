@@ -15,8 +15,8 @@ public class LocationEntity {
 
     private String cep;
 
-    private Integer numero;
+    private Integer number;
 
-    private String complemento;
+    private String complement;
 
 }

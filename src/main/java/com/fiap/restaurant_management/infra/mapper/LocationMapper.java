@@ -16,8 +16,8 @@ public class LocationMapper {
     public Location toEntityDomain(LocationEntity locationEntity) {
         return new Location(
                 locationEntity.getCep(),
-                locationEntity.getNumero(),
-                locationEntity.getComplemento()
+                locationEntity.getNumber(),
+                locationEntity.getComplement()
         );
     }
 }

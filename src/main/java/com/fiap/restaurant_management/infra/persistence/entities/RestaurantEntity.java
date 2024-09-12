@@ -28,6 +28,8 @@ public class RestaurantEntity {
 
     private LocalDateTime openingHours ;
 
+    private LocalDateTime closingHours;
+
     private Integer capacity;
 
     @OneToMany(mappedBy = "restaurantCode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reservation {
+public class Booking {
 
-    private Long reservationCode;
+    private Long bookingCode;
 
     private LocalDateTime reservationDate;
 
