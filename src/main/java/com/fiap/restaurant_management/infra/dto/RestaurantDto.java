@@ -1,6 +1,6 @@
 package com.fiap.restaurant_management.infra.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public record RestaurantDto(
 
@@ -10,6 +10,10 @@ public record RestaurantDto(
 
         String cuisineType,
 
-        Integer capacity
+        Integer capacity,
+
+        LocalTime openingHours,
+
+        LocalTime closingTime
 ) {
 }

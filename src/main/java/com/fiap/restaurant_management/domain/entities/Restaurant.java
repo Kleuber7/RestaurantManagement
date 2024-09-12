@@ -2,16 +2,14 @@ package com.fiap.restaurant_management.domain.entities;
 
 import com.fiap.restaurant_management.domain.valueobjects.Location;
 import com.fiap.restaurant_management.domain.valueobjects.OpeningHours;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 public class Restaurant {
 
     private Long restaurantCode;
@@ -22,13 +20,17 @@ public class Restaurant {
 
     private String cuisineType;
 
-    private LocalDateTime openingHours = new OpeningHours(LocalDateTime.now()).getOpeningHours();
+    private LocalTime openingHours;
+
+    private LocalTime closingTime;
 
     private Integer capacity;
 
     private List<Review> reviews;
 
-    public Restaurant(String name, Location location, String cuisineType, Integer capacity) {
+
+    public Restaurant(String name, Location location, String cuisineType, LocalTime openingHours, LocalTime closingTime, Integer capacity) {
+
         if( name == null || name.isEmpty() ){
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
@@ -45,12 +47,19 @@ public class Restaurant {
             throw new IllegalArgumentException("capacity cannot be less than 20");
         }
 
+        if(openingHours == null){
+            throw new IllegalArgumentException("Opening hours cannot be null");
+        }
+
+        if(closingTime == null){
+            throw new IllegalArgumentException("closing Time cannot be null");
+        }
+
         this.name = name;
         this.location = location;
         this.cuisineType = cuisineType;
+        this.openingHours = openingHours;
+        this.closingTime = closingTime;
         this.capacity = capacity;
     }
-
-
-
 }

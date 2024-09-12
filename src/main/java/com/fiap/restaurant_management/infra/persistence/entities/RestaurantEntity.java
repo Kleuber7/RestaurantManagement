@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,19 +27,22 @@ public class RestaurantEntity {
 
     private String cuisineType;
 
-    private LocalDateTime openingHours ;
+    private LocalTime openingHours ;
 
-    private LocalDateTime closingHours;
+    private LocalTime closingTime;
 
     private Integer capacity;
 
     @OneToMany(mappedBy = "restaurantCode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ReviewEntity> reviews = new ArrayList<>();
 
-    public RestaurantEntity(String name, LocationEntity location, String cuisineType, Integer capacity) {
+    public RestaurantEntity(String name, LocationEntity location, String cuisineType, LocalTime openingHours, LocalTime closingTime, Integer capacity) {
+
         this.name = name;
         this.location = location;
         this.cuisineType = cuisineType;
+        this.openingHours = openingHours;
+        this.closingTime = closingTime;
         this.capacity = capacity;
     }
 }

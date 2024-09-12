@@ -18,26 +18,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class RetaurantController {
 
-    private final CreateRestaurant useCaseRestautrant;
+    private final CreateRestaurant useCaseRestaurant;
 
     @PostMapping
     public ResponseEntity<RestaurantDto> createRestaurant(@RequestBody RestaurantDto dto) {
-        var restaurantDomain = useCaseRestautrant.createRestaurant(
-                new Restaurant(
-                        dto.name(),
-                        new Location(
-                                dto.location().cep(),
-                                dto.location().number(),
-                                dto.location().complement()),
-                        dto.cuisineType(),
-                        dto.capacity()));
-        var restaurantDto = new RestaurantDto(restaurantDomain.getName(),
+        Restaurant restaurantDomain = useCaseRestaurant.createRestaurant(new Restaurant(
+                dto.name(),
+                new Location(dto.location().cep(), dto.location().number(), dto.location().complement()),
+                dto.cuisineType(),
+                dto.openingHours(),
+                dto.closingTime(),
+                dto.capacity()
+        ));
+
+        RestaurantDto restaurantDto = new RestaurantDto(
+                restaurantDomain.getName(),
                 new LocationDto(
                         restaurantDomain.getLocation().getCep(),
                         restaurantDomain.getLocation().getNumber(),
-                        restaurantDomain.getLocation().getComplement()),
+                        restaurantDomain.getLocation().getComplement()
+                        ),
                 restaurantDomain.getCuisineType(),
-                restaurantDomain.getCapacity());
+                restaurantDomain.getCapacity(),
+                restaurantDomain.getOpeningHours(),
+                restaurantDomain.getOpeningHours()
+                );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(restaurantDto);
     }
