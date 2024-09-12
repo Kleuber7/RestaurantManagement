@@ -9,13 +9,13 @@ public class Location {
 
     private String cep;
 
-    private Integer numero;
+    private Integer number;
 
-    private String complemento;
+    private String complement;
 
     public Location(String cep, Integer numero, String complemento) {
         this.cep = cep;
-        this.numero = numero;
-        this.complemento = complemento;
+        this.number = numero;
+        this.complement = complemento;
     }
 }

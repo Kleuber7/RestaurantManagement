@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,6 +25,8 @@ public class Restaurant {
     private LocalDateTime openingHours = new OpeningHours(LocalDateTime.now()).getOpeningHours();
 
     private Integer capacity;
+
+    private List<Review> reviews;
 
     public Restaurant(String name, Location location, String cuisineType, Integer capacity) {
         if( name == null || name.isEmpty() ){
@@ -43,7 +46,7 @@ public class Restaurant {
         }
 
         this.name = name;
-        this.location = new Location(location.getCep(), location.getNumero(), location.getComplemento());
+        this.location = location;
         this.cuisineType = cuisineType;
         this.capacity = capacity;
     }

@@ -1,7 +1,7 @@
-package com.fiap.restaurant_management.infra.gateways;
+package com.fiap.restaurant_management.infra.mapper;
 
 import com.fiap.restaurant_management.domain.entities.Customer;
-import com.fiap.restaurant_management.infra.persistence.CustomerEntity;
+import com.fiap.restaurant_management.infra.persistence.entities.CustomerEntity;
 
 public class CustomerEntityMapper {
 

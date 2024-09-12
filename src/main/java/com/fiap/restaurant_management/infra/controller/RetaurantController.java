@@ -27,15 +27,15 @@ public class RetaurantController {
                         dto.name(),
                         new Location(
                                 dto.location().cep(),
-                                dto.location().numero(),
-                                dto.location().complemento()),
+                                dto.location().number(),
+                                dto.location().complement()),
                         dto.cuisineType(),
                         dto.capacity()));
         var restaurantDto = new RestaurantDto(restaurantDomain.getName(),
                 new LocationDto(
                         restaurantDomain.getLocation().getCep(),
-                        restaurantDomain.getLocation().getNumero(),
-                        restaurantDomain.getLocation().getComplemento()),
+                        restaurantDomain.getLocation().getNumber(),
+                        restaurantDomain.getLocation().getComplement()),
                 restaurantDomain.getCuisineType(),
                 restaurantDomain.getCapacity());
 
