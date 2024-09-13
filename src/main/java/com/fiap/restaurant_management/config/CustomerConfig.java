@@ -2,6 +2,7 @@ package com.fiap.restaurant_management.config;
 
 import com.fiap.restaurant_management.aplication.gateway.ICustomerRepository;
 import com.fiap.restaurant_management.aplication.usecases.CreateCustomer;
+import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
 import com.fiap.restaurant_management.infra.mapper.CustomerEntityMapper;
 import com.fiap.restaurant_management.infra.gateways.CustomerRepositoryImpl;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
@@ -25,5 +26,12 @@ public class CustomerConfig {
     CustomerEntityMapper customerEntityMapper() {
         return new CustomerEntityMapper();
     }
+
+    @Bean
+    FindCustomerById searchCustomerById(ICustomerRepository customerRepository) {
+        return new FindCustomerById(customerRepository);
+    }
+
+
 
 }

@@ -1,10 +1,9 @@
 package com.fiap.restaurant_management.domain.entities;
 
 import com.fiap.restaurant_management.domain.valueobjects.Location;
-import com.fiap.restaurant_management.domain.valueobjects.OpeningHours;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 

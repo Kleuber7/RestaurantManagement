@@ -6,4 +6,6 @@ public interface ICustomerRepository {
 
     Customer registerCustomer(Customer customer);
 
+    Customer findCustomerById(Long id);
+
 }

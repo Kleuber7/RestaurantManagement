@@ -1,6 +1,7 @@
 package com.fiap.restaurant_management.infra.controller;
 
 import com.fiap.restaurant_management.aplication.usecases.CreateCustomer;
+import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
 import com.fiap.restaurant_management.domain.entities.Customer;
 import com.fiap.restaurant_management.infra.dto.CustomerDto;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
     private final CreateCustomer createCustomer;
+    private final FindCustomerById findCustomerByIdUseCase;
 
     @PostMapping
     public ResponseEntity<CustomerDto> createCustomers(@RequestBody CustomerDto dto) {
@@ -22,5 +24,13 @@ public class CustomerController {
         var customerDto = new CustomerDto(customerDomain.getName(), customerDomain.getEmail(), customerDomain.getPhone());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(customerDto);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerDto> updateCustomer(@PathVariable Long id) {
+        Customer customer = findCustomerByIdUseCase.searchCustomerById(id);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new CustomerDto(customer.getName(), customer.getEmail(), customer.getPhone()));
     }
 }
