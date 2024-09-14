@@ -8,4 +8,6 @@ public interface ICustomerRepository {
 
     Customer findCustomerById(Long id);
 
+    Boolean existsCustomerById(Long code);
+
 }

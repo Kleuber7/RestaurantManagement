@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "CUSTOMER")
 @Getter
@@ -15,10 +17,18 @@ public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerCode;
+
     private String name;
+
     private String email;
+
     private String phone;
-    // falta implementar os relacionamentos
+
+    @OneToMany(mappedBy = "customerCode", cascade = CascadeType.ALL)
+    private List<BookingEntity> booking;
+
+    @OneToMany(mappedBy = "customerCode", cascade = CascadeType.ALL)
+    private List<ReviewEntity> review;
 
 
     public CustomerEntity(String name, String email, String phone) {

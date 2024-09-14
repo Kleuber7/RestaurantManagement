@@ -21,8 +21,10 @@ public class ReviewEntity {
     private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurat_code_PK")
-    private RestaurantEntity restaurantCode;
-    //falta criar relacionamento
-    private Integer customerCode;
+    @JoinColumn(name = "restauratCode")
+    private RestaurantEntity restaurant;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customerCode")
+    private CustomerEntity customer;
 }

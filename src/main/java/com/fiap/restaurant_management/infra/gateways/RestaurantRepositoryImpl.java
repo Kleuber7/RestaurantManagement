@@ -19,4 +19,9 @@ public class RestaurantRepositoryImpl implements IRestaurantRepository {
         restaurantRepository.save(domainEntity);
         return mapper.FromEntityDomain(domainEntity);
     }
+
+    @Override
+    public Boolean existByRestauranCode(Long restaurantCode) {
+        return restaurantRepository.existsById(restaurantCode);
+    }
 }

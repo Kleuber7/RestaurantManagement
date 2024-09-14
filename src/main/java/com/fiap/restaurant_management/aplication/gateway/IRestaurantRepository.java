@@ -5,4 +5,6 @@ import com.fiap.restaurant_management.domain.entities.Restaurant;
 public interface IRestaurantRepository {
 
     Restaurant createRestaurant(Restaurant restaurant);
+
+    Boolean existByRestauranCode(Long restaurantCode);
 }

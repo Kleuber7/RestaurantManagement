@@ -27,11 +27,12 @@ public class BookingEntity {
 
     private Status status;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //terminar a configuração
-    private CustomerEntity customerCode;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restauranteCodePk")
-    private RestaurantEntity RestaurantCode;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "customerCode")
+    private CustomerEntity customer;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "restauranteCode")
+    private RestaurantEntity restaurant;
 }

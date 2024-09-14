@@ -26,6 +26,12 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         CustomerEntity customerEntity = customerRepository.findByCustomerCode(id)
                 .orElseThrow(() -> new EntityNotFoundException("Customer not found"));
         return mapper.toCustomer(customerEntity);
+        //verificar se a validação pode ser feita aqui
+    }
+
+    @Override
+    public Boolean existsCustomerById(Long code) {
+        return customerRepository.existsById(code);
     }
 
 

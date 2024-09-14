@@ -2,7 +2,6 @@ package com.fiap.restaurant_management.config;
 
 import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.aplication.usecases.CreateRestaurant;
-import com.fiap.restaurant_management.domain.entities.Restaurant;
 import com.fiap.restaurant_management.infra.gateways.RestaurantRepositoryImpl;
 import com.fiap.restaurant_management.infra.mapper.LocationMapper;
 import com.fiap.restaurant_management.infra.mapper.RestaurantMapper;
