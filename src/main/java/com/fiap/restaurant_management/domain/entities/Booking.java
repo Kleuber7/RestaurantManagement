@@ -18,9 +18,9 @@ public class Booking {
 
     private Status status;
 
-    private Customer customerCode;
+    private Customer customer;
 
-    private Restaurant RestaurantCode;
+    private Restaurant Restaurant;
 
     public Booking(LocalDateTime reservationDate, Integer quantityOfPeople, Status status, Customer customerCode, Restaurant restaurantCode) {
 
@@ -49,8 +49,8 @@ public class Booking {
         this.reservationDate = reservationDate;
         this.quantityOfPeople = quantityOfPeople;
         this.status = status;
-        this.customerCode = customerCode;
-        RestaurantCode = restaurantCode;
+        this.customer = customerCode;
+        this.Restaurant = restaurantCode;
     }
 
     public boolean isValidOpeningHours(LocalDateTime openingHours) {

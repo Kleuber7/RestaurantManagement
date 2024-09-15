@@ -2,6 +2,9 @@ package com.fiap.restaurant_management.domain.entities;
 
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,6 +17,8 @@ public class Customer {
     private String email;
 
     private String phone;
+
+    private List<Review> reviews = new ArrayList<>();
 
     public Customer( String name, String email, String phone) {
 

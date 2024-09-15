@@ -2,7 +2,7 @@ package com.fiap.restaurant_management.infra.gateways;
 
 import com.fiap.restaurant_management.aplication.gateway.ICustomerRepository;
 import com.fiap.restaurant_management.domain.entities.Customer;
-import com.fiap.restaurant_management.infra.mapper.CustomerEntityMapper;
+import com.fiap.restaurant_management.infra.mapper.CustomerMapper;
 import com.fiap.restaurant_management.infra.persistence.entities.CustomerEntity;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class CustomerRepositoryImpl implements ICustomerRepository {
 
     private final CustomerRepository customerRepository;
-    private final CustomerEntityMapper mapper;
+    private final CustomerMapper mapper;
 
     @Override
     public Customer registerCustomer(Customer customer) {
@@ -26,7 +26,6 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         CustomerEntity customerEntity = customerRepository.findByCustomerCode(id)
                 .orElseThrow(() -> new EntityNotFoundException("Customer not found"));
         return mapper.toCustomer(customerEntity);
-        //verificar se a validação pode ser feita aqui
     }
 
     @Override

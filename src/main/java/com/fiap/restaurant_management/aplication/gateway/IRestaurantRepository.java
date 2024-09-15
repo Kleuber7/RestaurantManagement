@@ -6,5 +6,5 @@ public interface IRestaurantRepository {
 
     Restaurant createRestaurant(Restaurant restaurant);
 
-    Boolean existByRestauranCode(Long restaurantCode);
+    Boolean existByRestaurantCode(Long restaurantCode);
 }

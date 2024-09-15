@@ -17,7 +17,7 @@ public class CreateBooking {
 
     public Booking createBooking(Booking booking, Long restaurantCode, Long customerCode) {
 
-        if(!restaurantRepository.existByRestauranCode(restaurantCode)){
+        if(!restaurantRepository.existByRestaurantCode(restaurantCode)){
             throw new RestaurantNotFoundException(restaurantCode);
         }
 

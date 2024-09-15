@@ -4,6 +4,7 @@ import com.fiap.restaurant_management.aplication.exception.CustomerNotFoundExcep
 import com.fiap.restaurant_management.aplication.exception.RestaurantNotFoundException;
 import com.fiap.restaurant_management.aplication.gateway.IBookingRepository;
 import com.fiap.restaurant_management.domain.entities.Booking;
+import com.fiap.restaurant_management.infra.persistence.entities.BookingEntity;
 import com.fiap.restaurant_management.infra.persistence.entities.CustomerEntity;
 import com.fiap.restaurant_management.infra.persistence.entities.RestaurantEntity;
 import com.fiap.restaurant_management.infra.persistence.repository.BookingRepository;
@@ -26,6 +27,6 @@ public class BookingRepositoryImpl  implements IBookingRepository {
         CustomerEntity customer = customerRepository
                 .findById(customerCode).orElseThrow(() -> new CustomerNotFoundException(customerCode));
 
-
+        BookingEntity bookingEntity = new BookingEntity();
     }
 }

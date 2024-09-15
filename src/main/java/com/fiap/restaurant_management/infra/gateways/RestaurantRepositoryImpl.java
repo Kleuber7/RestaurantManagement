@@ -21,7 +21,7 @@ public class RestaurantRepositoryImpl implements IRestaurantRepository {
     }
 
     @Override
-    public Boolean existByRestauranCode(Long restaurantCode) {
+    public Boolean existByRestaurantCode(Long restaurantCode) {
         return restaurantRepository.existsById(restaurantCode);
     }
 }

@@ -35,4 +35,13 @@ public class BookingEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "restauranteCode")
     private RestaurantEntity restaurant;
+
+    public BookingEntity(LocalDateTime reservationDate, Integer quantityOfPeople, Status status,
+                         CustomerEntity customer, RestaurantEntity restaurant) {
+        this.reservationDate = reservationDate;
+        this.quantityOfPeople = quantityOfPeople;
+        this.status = status;
+        this.customer = customer;
+        this.restaurant = restaurant;
+    }
 }
