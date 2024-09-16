@@ -1,6 +1,8 @@
 package com.fiap.restaurant_management.infra.controller;
 
 import com.fiap.restaurant_management.aplication.usecases.CreateBooking;
+import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
+import com.fiap.restaurant_management.aplication.usecases.FindRestaurantById;
 import com.fiap.restaurant_management.domain.entities.Booking;
 import com.fiap.restaurant_management.domain.entities.Customer;
 import com.fiap.restaurant_management.domain.entities.Restaurant;
@@ -19,23 +21,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookingController {
 
     private final CreateBooking createBookingUseCase;
+    private final FindCustomerById findCustomerById;
+    private final FindRestaurantById findRestaurantById;
 
     @PostMapping
     public ResponseEntity<BookingDto> createBooking(@RequestBody BookingDto dto ){
-
+        Customer customer = findCustomerById.searchCustomerById(dto.customer());
+        Restaurant restaurant = findRestaurantById.findRestaurantById(dto.restaurant());
 
         Booking bookingDomain = createBookingUseCase.createBooking(new Booking(
                 dto.reservationDate(),
                 dto.quantityOfPeople(),
-                new Customer(),
-                new Restaurant()
+                customer,
+                restaurant
                 )
                 , dto.restaurant(), dto.customer());
 
+
         var bookingDto = new BookingDto(bookingDomain.getReservationDate(),
                 bookingDomain.getQuantityOfPeople(),
-                bookingDomain.getCustomer().getCustomerCode(),
-                bookingDomain.getRestaurant().getRestaurantCode());
+                customer.getCustomerCode(),
+                restaurant.getRestaurantCode());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingDto);
     }

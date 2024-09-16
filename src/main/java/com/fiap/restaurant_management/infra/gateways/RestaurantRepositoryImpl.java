@@ -1,5 +1,6 @@
 package com.fiap.restaurant_management.infra.gateways;
 
+import com.fiap.restaurant_management.aplication.exception.RestaurantNotFoundException;
 import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.domain.entities.Restaurant;
 import com.fiap.restaurant_management.infra.mapper.RestaurantMapper;
@@ -23,5 +24,13 @@ public class RestaurantRepositoryImpl implements IRestaurantRepository {
     @Override
     public Boolean existByRestaurantCode(Long restaurantCode) {
         return restaurantRepository.existsById(restaurantCode);
+    }
+
+    @Override
+    public Restaurant getRestaurantById(Long restaurantCode) {
+        var restaurantEntity =  restaurantRepository.findById(restaurantCode)
+                .orElseThrow(() -> new RestaurantNotFoundException(restaurantCode));
+
+        return mapper.FromEntityDomain(restaurantEntity);
     }
 }

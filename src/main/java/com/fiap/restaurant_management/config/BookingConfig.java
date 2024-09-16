@@ -4,6 +4,8 @@ import com.fiap.restaurant_management.aplication.gateway.IBookingRepository;
 import com.fiap.restaurant_management.aplication.gateway.ICustomerRepository;
 import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.aplication.usecases.CreateBooking;
+import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
+import com.fiap.restaurant_management.aplication.usecases.FindRestaurantById;
 import com.fiap.restaurant_management.infra.controller.BookingController;
 import com.fiap.restaurant_management.infra.gateways.BookingRepositoryImpl;
 import com.fiap.restaurant_management.infra.mapper.BookingMapper;
@@ -21,8 +23,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class BookingConfig {
 
     @Bean
-    public BookingController bookingController(CreateBooking createBooking) {
-        return new BookingController(createBooking);
+    public BookingController bookingController(CreateBooking createBooking, FindCustomerById customer, FindRestaurantById restaurant) {
+        return new BookingController(createBooking, customer, restaurant);
+    }
+
+    @Bean
+    public FindRestaurantById findRestaurantById(IRestaurantRepository repository) {
+        return new FindRestaurantById(repository);
     }
 
     @Bean

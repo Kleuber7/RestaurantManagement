@@ -21,7 +21,7 @@ public class CreateBooking {
             throw new RestaurantNotFoundException(restaurantCode);
         }
 
-        if(customerRepository.existsCustomerById(customerCode)){
+        if(!customerRepository.existsCustomerById(customerCode)){
             throw new CustomerNotFoundException(customerCode);
         }
 
