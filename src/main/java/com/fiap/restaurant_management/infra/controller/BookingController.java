@@ -22,13 +22,15 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<BookingDto> createBooking(@RequestBody BookingDto dto ){
+
+
         Booking bookingDomain = createBookingUseCase.createBooking(new Booking(
                 dto.reservationDate(),
                 dto.quantityOfPeople(),
                 new Customer(),
                 new Restaurant()
                 )
-                , dto.Restaurant(), dto.Restaurant());
+                , dto.restaurant(), dto.customer());
 
         var bookingDto = new BookingDto(bookingDomain.getReservationDate(),
                 bookingDomain.getQuantityOfPeople(),

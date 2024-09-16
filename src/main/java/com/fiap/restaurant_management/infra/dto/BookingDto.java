@@ -10,7 +10,7 @@ public record BookingDto(
 
         Long customer,
 
-        Long Restaurant
+        Long restaurant
 
 ) {
 }
