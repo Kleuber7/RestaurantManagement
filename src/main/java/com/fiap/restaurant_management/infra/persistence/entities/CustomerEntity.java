@@ -24,10 +24,10 @@ public class CustomerEntity {
 
     private String phone;
 
-    @OneToMany(mappedBy = "customerCode", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<BookingEntity> booking;
 
-    @OneToMany(mappedBy = "customerCode", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<ReviewEntity> review;
 
 

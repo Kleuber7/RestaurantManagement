@@ -16,13 +16,13 @@ public class Booking {
 
     private Integer quantityOfPeople;
 
-    private Status status;
+    private Status status = Status.PENDING;
 
     private Customer customer;
 
-    private Restaurant Restaurant;
+    private Restaurant restaurant;
 
-    public Booking(LocalDateTime reservationDate, Integer quantityOfPeople, Status status, Customer customerCode, Restaurant restaurantCode) {
+    public Booking(LocalDateTime reservationDate, Integer quantityOfPeople, Customer customerCode, Restaurant restaurantCode) {
 
         if (customerCode == null) {
             throw new IllegalArgumentException("customerCode cannot be null");
@@ -48,10 +48,10 @@ public class Booking {
 
         this.reservationDate = reservationDate;
         this.quantityOfPeople = quantityOfPeople;
-        this.status = status;
         this.customer = customerCode;
-        this.Restaurant = restaurantCode;
+        this.restaurant = restaurantCode;
     }
+
 
     public boolean isValidOpeningHours(LocalDateTime openingHours) {
         int hour = openingHours.getHour();

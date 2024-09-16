@@ -8,8 +8,10 @@ import com.fiap.restaurant_management.infra.gateways.CustomerRepositoryImpl;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
+@EnableJpaRepositories(basePackages = "com.fiap.restaurant_management.infra.persistence.repository")
 public class CustomerConfig {
 
     @Bean

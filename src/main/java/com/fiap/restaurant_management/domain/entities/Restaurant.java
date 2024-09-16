@@ -2,6 +2,7 @@ package com.fiap.restaurant_management.domain.entities;
 
 import com.fiap.restaurant_management.domain.valueobjects.Location;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalTime;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Restaurant {
 
     private Long restaurantCode;

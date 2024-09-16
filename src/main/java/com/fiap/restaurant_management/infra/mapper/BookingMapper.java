@@ -27,9 +27,9 @@ public class BookingMapper {
         return new Booking(
                 bookingEntity.getReservationDate(),
                 bookingEntity.getQuantityOfPeople(),
-                bookingEntity.getStatus(),
-                customerEntityMapper.toCustomer(bookingEntity.getCustomer()) ,
+                customerEntityMapper.toCustomer(bookingEntity.getCustomer()),
                 restaurantEntityMapper.FromEntityDomain(bookingEntity.getRestaurant())
+
         );
     }
 }

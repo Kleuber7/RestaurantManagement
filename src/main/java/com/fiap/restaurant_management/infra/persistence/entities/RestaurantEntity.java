@@ -33,10 +33,10 @@ public class RestaurantEntity {
 
     private Integer capacity;
 
-    @OneToMany(mappedBy = "restaurantCode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ReviewEntity> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "restauranteCode", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BookingEntity> booking;
 
     public RestaurantEntity(String name, LocationEntity location, String cuisineType, LocalTime openingHours, LocalTime closingTime, Integer capacity) {

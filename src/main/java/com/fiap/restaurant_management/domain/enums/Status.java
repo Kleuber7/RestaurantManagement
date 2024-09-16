@@ -1,7 +1,17 @@
 package com.fiap.restaurant_management.domain.enums;
 
 public enum Status {
-    CONFIRMED,
-    PENDING,
-    DENIED
+    CONFIRMED(1),
+    PENDING(2),
+    DENIED(3);
+
+    private final int value;
+
+    Status(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
 }
