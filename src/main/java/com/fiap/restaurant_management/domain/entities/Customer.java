@@ -21,7 +21,7 @@ public class Customer {
 
     private List<Review> reviews = new ArrayList<>();
 
-    public Customer( String name, String email, String phone) {
+    public Customer( Long customerCode, String name, String email, String phone) {
 
         if( name == null || name.isBlank() ) {
             throw new IllegalArgumentException("Name cannot be null or empty");
@@ -30,6 +30,22 @@ public class Customer {
         if( email == null || email.isBlank() ) {
             throw new IllegalArgumentException("Email cannot be null or empty");
         }
+        this.customerCode = customerCode;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public Customer(  String name, String email, String phone) {
+
+        if( name == null || name.isBlank() ) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+
+        if( email == null || email.isBlank() ) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
+
         this.name = name;
         this.email = email;
         this.phone = phone;

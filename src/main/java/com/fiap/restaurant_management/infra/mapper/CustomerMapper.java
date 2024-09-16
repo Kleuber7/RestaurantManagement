@@ -15,6 +15,7 @@ public class CustomerMapper {
 
     public Customer toCustomer(CustomerEntity customerEntity) {
         return new Customer(
+                customerEntity.getCustomerCode(),
                 customerEntity.getName(),
                 customerEntity.getEmail(),
                 customerEntity.getPhone()

@@ -22,11 +22,13 @@ public class RestaurantMapper {
 
     public Restaurant FromEntityDomain(RestaurantEntity restaurantEntity) {
         return new Restaurant(
+                restaurantEntity.getRestaurantCode(),
                 restaurantEntity.getName(),
                 mapper.toEntityDomain(restaurantEntity.getLocation()),
                 restaurantEntity.getCuisineType(),
                 restaurantEntity.getOpeningHours(),
                 restaurantEntity.getClosingTime(),
-                restaurantEntity.getCapacity());
+                restaurantEntity.getCapacity()
+        );
     }
 }
