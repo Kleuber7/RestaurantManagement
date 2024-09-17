@@ -8,7 +8,6 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(of = "reviewCode")
 public class ReviewEntity {
 
@@ -27,4 +26,11 @@ public class ReviewEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customerCode")
     private CustomerEntity customer;
+
+    public ReviewEntity(Double rating, String comment, RestaurantEntity restaurant, CustomerEntity customer) {
+        this.rating = rating;
+        this.comment = comment;
+        this.restaurant = restaurant;
+        this.customer = customer;
+    }
 }
