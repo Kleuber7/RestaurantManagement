@@ -1,14 +1,13 @@
 package com.fiap.restaurant_management.domain.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Review {
 
     private Long reviewCode;
@@ -17,8 +16,31 @@ public class Review {
 
     private String comment;
 
-    private Integer restaurantCode;
+    private Restaurant restaurant;
 
-    private Integer customerCode;
+    private Customer customer;
 
+    public Review(Double rating, String comment, Restaurant restaurant, Customer customer) {
+
+        if(rating == null || rating.isNaN()){
+            throw new IllegalArgumentException("Review rating is invalid");
+        }
+
+        if(comment == null || comment.isEmpty()){
+            throw new IllegalArgumentException("Review comment is invalid");
+        }
+
+        if(restaurant == null){
+            throw new IllegalArgumentException("Restaurant is invalid or null");
+        }
+
+        if(customer ==  null ){
+            throw new IllegalArgumentException("Customer is invalid or null");
+        }
+
+        this.rating = rating;
+        this.comment = comment;
+        this.restaurant = restaurant;
+        this.customer = customer;
+    }
 }

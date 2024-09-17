@@ -1,12 +1,12 @@
 package com.fiap.restaurant_management.domain.entities;
 
 import com.fiap.restaurant_management.domain.valueobjects.Location;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -29,7 +29,9 @@ public class Restaurant {
 
     private Integer capacity;
 
-    private List<Review> reviews;
+    private List<Review> reviews = new ArrayList<>();
+
+    private List<Booking> books = new ArrayList<>();
 
 
     public Restaurant(String name, Location location, String cuisineType, LocalTime openingHours, LocalTime closingTime, Integer capacity) {
