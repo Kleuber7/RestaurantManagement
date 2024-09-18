@@ -12,6 +12,11 @@ import com.fiap.restaurant_management.infra.persistence.repository.BookingReposi
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class BookingRepositoryImpl  implements IBookingRepository {
@@ -38,5 +43,16 @@ public class BookingRepositoryImpl  implements IBookingRepository {
         bookingRepository.save(bookingEntity);
 
         return bookingMapper.toBookingEntityDomain(bookingEntity);
+    }
+
+    @Override
+    public List<Booking> getAllBookings(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        List<BookingEntity> bookingList = bookingRepository.findAll(pageable).getContent();
+
+        return bookingList.stream()
+                .map( b  -> bookingMapper.toBookingEntityDomain(b))
+                .collect(Collectors.toList());
     }
 }

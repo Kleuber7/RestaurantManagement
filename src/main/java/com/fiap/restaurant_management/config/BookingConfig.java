@@ -6,7 +6,9 @@ import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.aplication.usecases.CreateBooking;
 import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
 import com.fiap.restaurant_management.aplication.usecases.FindRestaurantById;
+import com.fiap.restaurant_management.aplication.usecases.GetAllBooking;
 import com.fiap.restaurant_management.infra.controller.BookingController;
+import com.fiap.restaurant_management.infra.controller.mapper.BookingMapperDto;
 import com.fiap.restaurant_management.infra.gateways.BookingRepositoryImpl;
 import com.fiap.restaurant_management.infra.mapper.BookingMapper;
 import com.fiap.restaurant_management.infra.mapper.CustomerMapper;
@@ -23,8 +25,20 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class BookingConfig {
 
     @Bean
-    public BookingController bookingController(CreateBooking createBooking, FindCustomerById customer, FindRestaurantById restaurant) {
-        return new BookingController(createBooking, customer, restaurant);
+    public BookingController bookingController(CreateBooking createBooking, FindCustomerById customer,
+                                               FindRestaurantById restaurant, GetAllBooking getAllBooking,
+                                               BookingMapperDto bookingMapperDto) {
+        return new BookingController(createBooking, customer, restaurant, getAllBooking, bookingMapperDto);
+    }
+
+    @Bean
+    public BookingMapperDto bookingMapperDto() {
+        return new BookingMapperDto();
+    }
+
+    @Bean
+    public GetAllBooking getAllBooking(IBookingRepository bookingRepository) {
+        return new GetAllBooking(bookingRepository);
     }
 
     @Bean
@@ -43,9 +57,9 @@ public class BookingConfig {
 
     @Bean
     public BookingRepositoryImpl bookingsRepository(BookingRepository bookingRepository,
-                                                   RestaurantRepository restaurantRepository,
-                                                   CustomerRepository customerRepository,
-                                                   BookingMapper bookingMapper) {
+                                                    RestaurantRepository restaurantRepository,
+                                                    CustomerRepository customerRepository,
+                                                    BookingMapper bookingMapper) {
         return new BookingRepositoryImpl(bookingRepository, restaurantRepository, customerRepository, bookingMapper);
     }
 
