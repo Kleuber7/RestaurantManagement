@@ -45,10 +45,7 @@ public class BookingController {
                 )
                 , dto.restaurant(), dto.customer());
 
-        var bookingDto = new BookingDto(bookingDomain.getReservationDate(),
-                bookingDomain.getQuantityOfPeople(),
-                customer.getCustomerCode(),
-                restaurant.getRestaurantCode());
+        var bookingDto = BookingMapperDto.toBookingDto(bookingDomain);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingDto);
     }
