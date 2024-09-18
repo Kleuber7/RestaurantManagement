@@ -13,4 +13,14 @@ public class BookingMapperDto {
                 booking.getRestaurant().getRestaurantCode()
         );
     }
+
+    public static BookingDto toBookingDtoStatus(Booking booking) {
+        return new BookingDto  (
+                booking.getReservationDate(),
+                booking.getQuantityOfPeople(),
+                booking.getStatus(),
+                booking.getCustomer().getCustomerCode(),
+                booking.getRestaurant().getRestaurantCode()
+        );
+    }
 }

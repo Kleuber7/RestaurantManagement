@@ -56,7 +56,7 @@ public class BookingController {
         List<Booking> bookingList = getAllBookingUseCase
                 .getAllBooking(pageable.getPageNumber(), pageable.getPageSize());
 
-        List<BookingDto> bookingDtoList = bookingList.stream().map(BookingMapperDto::toBookingDto)
+        List<BookingDto> bookingDtoList = bookingList.stream().map(BookingMapperDto::toBookingDtoStatus)
                 .collect(Collectors.toList());
 
        Page<BookingDto> bookingDtoPage = new PageImpl<>(bookingDtoList);
