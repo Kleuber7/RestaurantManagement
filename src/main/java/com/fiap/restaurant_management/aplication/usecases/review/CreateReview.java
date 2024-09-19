@@ -2,6 +2,7 @@ package com.fiap.restaurant_management.aplication.usecases.review;
 
 import com.fiap.restaurant_management.aplication.exception.CustomerNotFoundException;
 import com.fiap.restaurant_management.aplication.exception.RestaurantNotFoundException;
+import com.fiap.restaurant_management.aplication.exception.ReviewNotAllowedException;
 import com.fiap.restaurant_management.aplication.gateway.ICustomerRepository;
 import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.aplication.gateway.IReviewRepository;
@@ -23,6 +24,10 @@ public class CreateReview {
 
         if(!customerRepository.existsCustomerById(customerCode)) {
             throw new CustomerNotFoundException(restaurantCode);
+        }
+
+        if(!reviewRepository.customerCanMakeMvaluation(customerCode, restaurantCode)){
+            throw new ReviewNotAllowedException(restaurantCode);
         }
 
         return reviewRepository.createReview(review, restaurantCode, customerCode);

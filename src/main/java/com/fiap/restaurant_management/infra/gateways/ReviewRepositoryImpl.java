@@ -8,6 +8,7 @@ import com.fiap.restaurant_management.infra.mapper.ReviewMapper;
 import com.fiap.restaurant_management.infra.persistence.entities.CustomerEntity;
 import com.fiap.restaurant_management.infra.persistence.entities.RestaurantEntity;
 import com.fiap.restaurant_management.infra.persistence.entities.ReviewEntity;
+import com.fiap.restaurant_management.infra.persistence.repository.BookingRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.ReviewRepository;
@@ -20,6 +21,7 @@ public class ReviewRepositoryImpl implements IReviewRepository {
     private final CustomerRepository customerRepository;
     private final RestaurantRepository restaurantRepository;
     private final ReviewMapper reviewMapper;
+    private final BookingRepository bookingRepository;
 
     @Override
     public Review createReview(Review review, Long restaurantCode, Long customerCode) {
@@ -39,5 +41,12 @@ public class ReviewRepositoryImpl implements IReviewRepository {
         reviewRepository.save(reviewEntity);
 
         return reviewMapper.toEntityDomain(reviewEntity);
+    }
+
+    @Override
+    public Boolean customerCanMakeMvaluation(Long customerCode, Long restaurantCode) {
+        Boolean result = reviewRepository.hightCheck(customerCode, restaurantCode);
+
+        return result;
     }
 }

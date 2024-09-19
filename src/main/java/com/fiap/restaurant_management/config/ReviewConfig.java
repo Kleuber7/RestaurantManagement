@@ -11,6 +11,7 @@ import com.fiap.restaurant_management.infra.gateways.ReviewRepositoryImpl;
 import com.fiap.restaurant_management.infra.mapper.CustomerMapper;
 import com.fiap.restaurant_management.infra.mapper.RestaurantMapper;
 import com.fiap.restaurant_management.infra.mapper.ReviewMapper;
+import com.fiap.restaurant_management.infra.persistence.repository.BookingRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.ReviewRepository;
@@ -32,9 +33,11 @@ public class ReviewConfig {
 
     @Bean
     public ReviewRepositoryImpl customReviewRepository(ReviewRepository restaurantRepository,
-                                                 CustomerRepository customerRepository,
-                                                 RestaurantRepository restaurantRepository2, ReviewMapper reviewMapper) {
-        return  new ReviewRepositoryImpl(restaurantRepository, customerRepository, restaurantRepository2, reviewMapper);
+                                                       CustomerRepository customerRepository,
+                                                       RestaurantRepository restaurantRepository2, ReviewMapper reviewMapper,
+                                                       BookingRepository bookingRepository) {
+        return  new ReviewRepositoryImpl(restaurantRepository,
+                customerRepository, restaurantRepository2, reviewMapper, bookingRepository);
     }
 
     @Bean
