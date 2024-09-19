@@ -1,4 +1,4 @@
-package com.fiap.restaurant_management.aplication.usecases;
+package com.fiap.restaurant_management.aplication.usecases.booking;
 
 import com.fiap.restaurant_management.aplication.gateway.IBookingRepository;
 import com.fiap.restaurant_management.domain.entities.Booking;

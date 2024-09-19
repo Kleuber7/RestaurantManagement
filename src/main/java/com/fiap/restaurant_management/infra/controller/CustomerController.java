@@ -1,7 +1,7 @@
 package com.fiap.restaurant_management.infra.controller;
 
-import com.fiap.restaurant_management.aplication.usecases.CreateCustomer;
-import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
+import com.fiap.restaurant_management.aplication.usecases.customer.CreateCustomer;
+import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
 import com.fiap.restaurant_management.domain.entities.Customer;
 import com.fiap.restaurant_management.infra.dto.CustomerDto;
 import lombok.RequiredArgsConstructor;

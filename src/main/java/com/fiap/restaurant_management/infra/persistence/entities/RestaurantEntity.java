@@ -31,7 +31,7 @@ public class RestaurantEntity {
 
     private LocalTime closingTime;
 
-    private Integer capacity;
+    private Integer totalTables;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ReviewEntity> reviews = new ArrayList<>();
@@ -46,6 +46,6 @@ public class RestaurantEntity {
         this.cuisineType = cuisineType;
         this.openingHours = openingHours;
         this.closingTime = closingTime;
-        this.capacity = capacity;
+        this.totalTables = capacity;
     }
 }

@@ -23,7 +23,7 @@ public class BookingEntity {
 
     private LocalDateTime reservationDate;
 
-    private Integer quantityOfPeople;
+    private Integer numberOfTables;
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -37,10 +37,10 @@ public class BookingEntity {
     @JoinColumn(name = "restauranteCode")
     private RestaurantEntity restaurant;
 
-    public BookingEntity(LocalDateTime reservationDate, Integer quantityOfPeople, Status status,
+    public BookingEntity(LocalDateTime reservationDate, Integer numberOfTables, Status status,
                          CustomerEntity customer, RestaurantEntity restaurant) {
         this.reservationDate = reservationDate;
-        this.quantityOfPeople = quantityOfPeople;
+        this.numberOfTables = numberOfTables;
         this.status = status;
         this.customer = customer;
         this.restaurant = restaurant;

@@ -16,7 +16,7 @@ public class BookingMapper {
 
         return new BookingEntity(
                 booking.getReservationDate(),
-                booking.getQuantityOfPeople(),
+                booking.getNumberOfTables(),
                 booking.getStatus(),
                 customerEntityMapper.toEntity(booking.getCustomer()),
                 restaurantEntityMapper.ToEntity(booking.getRestaurant())
@@ -26,7 +26,7 @@ public class BookingMapper {
     public Booking toBookingEntityDomain(BookingEntity bookingEntity) {
         return new Booking(
                 bookingEntity.getReservationDate(),
-                bookingEntity.getQuantityOfPeople(),
+                bookingEntity.getNumberOfTables(),
                 customerEntityMapper.toCustomer(bookingEntity.getCustomer()),
                 restaurantEntityMapper.FromEntityDomain(bookingEntity.getRestaurant())
 

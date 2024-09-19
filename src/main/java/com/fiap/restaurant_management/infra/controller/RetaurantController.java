@@ -1,6 +1,6 @@
 package com.fiap.restaurant_management.infra.controller;
 
-import com.fiap.restaurant_management.aplication.usecases.CreateRestaurant;
+import com.fiap.restaurant_management.aplication.usecases.restaurant.CreateRestaurant;
 import com.fiap.restaurant_management.domain.entities.Restaurant;
 import com.fiap.restaurant_management.domain.valueobjects.Location;
 import com.fiap.restaurant_management.infra.dto.LocationDto;
@@ -28,7 +28,7 @@ public class RetaurantController {
                 dto.cuisineType(),
                 dto.openingHours(),
                 dto.closingTime(),
-                dto.capacity()
+                dto.totalTables()
         ));
 
         RestaurantDto restaurantDto = new RestaurantDto(
@@ -39,7 +39,7 @@ public class RetaurantController {
                         restaurantDomain.getLocation().getComplement()
                         ),
                 restaurantDomain.getCuisineType(),
-                restaurantDomain.getCapacity(),
+                restaurantDomain.getTotalTables(),
                 restaurantDomain.getOpeningHours(),
                 restaurantDomain.getClosingTime()
                 );

@@ -1,8 +1,8 @@
 package com.fiap.restaurant_management.config;
 
 import com.fiap.restaurant_management.aplication.gateway.ICustomerRepository;
-import com.fiap.restaurant_management.aplication.usecases.CreateCustomer;
-import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
+import com.fiap.restaurant_management.aplication.usecases.customer.CreateCustomer;
+import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
 import com.fiap.restaurant_management.infra.mapper.CustomerMapper;
 import com.fiap.restaurant_management.infra.gateways.CustomerRepositoryImpl;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;

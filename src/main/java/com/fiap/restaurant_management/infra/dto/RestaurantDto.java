@@ -10,7 +10,7 @@ public record RestaurantDto(
 
         String cuisineType,
 
-        Integer capacity,
+        Integer totalTables,
 
         LocalTime openingHours,
 

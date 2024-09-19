@@ -1,9 +1,9 @@
 package com.fiap.restaurant_management.infra.controller;
 
-import com.fiap.restaurant_management.aplication.usecases.CreateBooking;
-import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
-import com.fiap.restaurant_management.aplication.usecases.FindRestaurantById;
-import com.fiap.restaurant_management.aplication.usecases.GetAllBooking;
+import com.fiap.restaurant_management.aplication.usecases.booking.CreateBooking;
+import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
+import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantById;
+import com.fiap.restaurant_management.aplication.usecases.booking.GetAllBooking;
 import com.fiap.restaurant_management.domain.entities.Booking;
 import com.fiap.restaurant_management.domain.entities.Customer;
 import com.fiap.restaurant_management.domain.entities.Restaurant;
@@ -39,7 +39,7 @@ public class BookingController {
 
         Booking bookingDomain = createBookingUseCase.createBooking(new Booking(
                         dto.reservationDate(),
-                        dto.quantityOfPeople(),
+                        dto.numberOfTables(),
                         customer,
                         restaurant
                 )

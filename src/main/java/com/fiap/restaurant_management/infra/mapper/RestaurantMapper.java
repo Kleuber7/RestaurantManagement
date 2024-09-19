@@ -16,7 +16,7 @@ public class RestaurantMapper {
                 restaurant.getCuisineType(),
                 restaurant.getOpeningHours(),
                 restaurant.getClosingTime(),
-                restaurant.getCapacity()
+                restaurant.getTotalTables()
         );
     }
 
@@ -28,7 +28,7 @@ public class RestaurantMapper {
                 restaurantEntity.getCuisineType(),
                 restaurantEntity.getOpeningHours(),
                 restaurantEntity.getClosingTime(),
-                restaurantEntity.getCapacity()
+                restaurantEntity.getTotalTables()
         );
     }
 }

@@ -35,7 +35,7 @@ public class BookingRepositoryImpl  implements IBookingRepository {
                 .findById(customerCode).orElseThrow(() -> new CustomerNotFoundException(customerCode));
 
         BookingEntity bookingEntity = new BookingEntity(booking.getReservationDate(),
-                booking.getQuantityOfPeople(),
+                booking.getNumberOfTables(),
                 booking.getStatus(),
                 customer,
                 restaurant);

@@ -1,8 +1,8 @@
 package com.fiap.restaurant_management.infra.controller;
 
-import com.fiap.restaurant_management.aplication.usecases.CreateReview;
-import com.fiap.restaurant_management.aplication.usecases.FindCustomerById;
-import com.fiap.restaurant_management.aplication.usecases.FindRestaurantById;
+import com.fiap.restaurant_management.aplication.usecases.review.CreateReview;
+import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
+import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantById;
 import com.fiap.restaurant_management.domain.entities.Review;
 import com.fiap.restaurant_management.infra.dto.ReviewDto;
 import lombok.RequiredArgsConstructor;

@@ -27,14 +27,14 @@ public class Restaurant {
 
     private LocalTime closingTime;
 
-    private Integer capacity;
+    private Integer totalTables;
 
     private List<Review> reviews = new ArrayList<>();
 
     private List<Booking> books = new ArrayList<>();
 
 
-    public Restaurant(String name, Location location, String cuisineType, LocalTime openingHours, LocalTime closingTime, Integer capacity) {
+    public Restaurant(String name, Location location, String cuisineType, LocalTime openingHours, LocalTime closingTime, Integer tables) {
 
         if( name == null || name.isEmpty() ){
             throw new IllegalArgumentException("Name cannot be null or empty");
@@ -48,8 +48,8 @@ public class Restaurant {
             throw new IllegalArgumentException("Cuisine type cannot be null or empty");
         }
 
-        if( capacity == null || capacity < 20 ){
-            throw new IllegalArgumentException("capacity cannot be less than 20");
+        if( tables == null || tables < 20 ){
+            throw new IllegalArgumentException("table quantity cannot be less than 20 units");
         }
 
         if(openingHours == null){
@@ -65,10 +65,10 @@ public class Restaurant {
         this.cuisineType = cuisineType;
         this.openingHours = openingHours;
         this.closingTime = closingTime;
-        this.capacity = capacity;
+        this.totalTables = tables;
     }
 
-    public Restaurant(Long restaurantCode ,String name, Location location, String cuisineType, LocalTime openingHours, LocalTime closingTime, Integer capacity) {
+    public Restaurant(Long restaurantCode ,String name, Location location, String cuisineType, LocalTime openingHours, LocalTime closingTime, Integer tables) {
 
         if( name == null || name.isEmpty() ){
             throw new IllegalArgumentException("Name cannot be null or empty");
@@ -82,8 +82,8 @@ public class Restaurant {
             throw new IllegalArgumentException("Cuisine type cannot be null or empty");
         }
 
-        if( capacity == null || capacity < 20 ){
-            throw new IllegalArgumentException("capacity cannot be less than 20");
+        if( tables == null || tables < 20 ){
+            throw new IllegalArgumentException("table quantity cannot be less than 20 units");
         }
 
         if(openingHours == null){
@@ -100,6 +100,6 @@ public class Restaurant {
         this.cuisineType = cuisineType;
         this.openingHours = openingHours;
         this.closingTime = closingTime;
-        this.capacity = capacity;
+        this.totalTables = tables;
     }
 }

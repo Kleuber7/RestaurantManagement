@@ -1,4 +1,4 @@
-package com.fiap.restaurant_management.aplication.usecases;
+package com.fiap.restaurant_management.aplication.usecases.booking;
 
 import com.fiap.restaurant_management.aplication.exception.CustomerNotFoundException;
 import com.fiap.restaurant_management.aplication.exception.RestaurantNotFoundException;

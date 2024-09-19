@@ -14,7 +14,7 @@ public class Booking {
 
     private LocalDateTime reservationDate;
 
-    private Integer quantityOfPeople;
+    private Integer numberOfTables;
 
     private Status status = Status.PENDING;
 
@@ -22,7 +22,7 @@ public class Booking {
 
     private Restaurant restaurant;
 
-    public Booking(LocalDateTime reservationDate, Integer quantityOfPeople, Customer customerCode, Restaurant restaurantCode) {
+    public Booking(LocalDateTime reservationDate, Integer numberOfTables, Customer customerCode, Restaurant restaurantCode) {
 
         if (customerCode == null) {
             throw new IllegalArgumentException("customerCode cannot be null");
@@ -38,8 +38,8 @@ public class Booking {
             throw new IllegalArgumentException("reservationDate cannot be null");
         }
 
-        if(quantityOfPeople < 1 || restaurantCode.getCapacity() < quantityOfPeople) {
-            throw new IllegalArgumentException("quantityOfPeople cannot be less than 1 or greater than the establishment's capacity");
+        if(numberOfTables < 1 || restaurantCode.getTotalTables() < numberOfTables) {
+            throw new IllegalArgumentException("number of tables cannot be less than 1 or greater than the establishment's capacity");
         }
 
         if(status == null) {
@@ -47,7 +47,7 @@ public class Booking {
         }
 
         this.reservationDate = reservationDate;
-        this.quantityOfPeople = quantityOfPeople;
+        this.numberOfTables = numberOfTables;
         this.customer = customerCode;
         this.restaurant = restaurantCode;
     }

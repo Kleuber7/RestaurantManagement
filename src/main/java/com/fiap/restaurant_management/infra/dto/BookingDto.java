@@ -8,7 +8,7 @@ public record BookingDto(
 
         LocalDateTime reservationDate,
 
-        Integer quantityOfPeople,
+        Integer numberOfTables,
         
         Status status,
 
