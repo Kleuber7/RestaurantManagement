@@ -25,6 +25,7 @@ public class BookingEntity {
 
     private Integer quantityOfPeople;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
 
