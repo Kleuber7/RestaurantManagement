@@ -18,7 +18,4 @@ public record BookingDto(
 
 ) {
 
-    public BookingDto(LocalDateTime reservationDate, Integer quantityOfPeople, Long customerCode, Long restaurantCode) {
-        this(reservationDate, quantityOfPeople, Status.PENDING, customerCode, restaurantCode);
-    }
 }

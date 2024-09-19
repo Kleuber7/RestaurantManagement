@@ -9,6 +9,7 @@ public class BookingMapperDto {
         return new BookingDto(
                 booking.getReservationDate(),
                 booking.getNumberOfTables(),
+                booking.getStatus(),
                 booking.getCustomer().getCustomerCode(),
                 booking.getRestaurant().getRestaurantCode()
         );

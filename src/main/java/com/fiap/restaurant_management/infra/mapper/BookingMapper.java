@@ -25,8 +25,10 @@ public class BookingMapper {
 
     public Booking toBookingEntityDomain(BookingEntity bookingEntity) {
         return new Booking(
+                bookingEntity.getBookingCode(),
                 bookingEntity.getReservationDate(),
                 bookingEntity.getNumberOfTables(),
+                bookingEntity.getStatus(),
                 customerEntityMapper.toCustomer(bookingEntity.getCustomer()),
                 restaurantEntityMapper.FromEntityDomain(bookingEntity.getRestaurant())
 

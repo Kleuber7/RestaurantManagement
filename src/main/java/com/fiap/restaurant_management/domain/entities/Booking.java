@@ -52,6 +52,14 @@ public class Booking {
         this.restaurant = restaurantCode;
     }
 
+    public Booking(Long bookingCode, LocalDateTime reservationDate, Integer numberOfTables, Status status, Customer customer, Restaurant restaurant) {
+        this.bookingCode = bookingCode;
+        this.reservationDate = reservationDate;
+        this.numberOfTables = numberOfTables;
+        this.status = status;
+        this.customer = customer;
+        this.restaurant = restaurant;
+    }
 
     public boolean isValidOpeningHours(LocalDateTime openingHours) {
         int hour = openingHours.getHour();
