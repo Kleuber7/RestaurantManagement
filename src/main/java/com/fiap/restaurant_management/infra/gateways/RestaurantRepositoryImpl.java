@@ -9,6 +9,9 @@ import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRep
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 public class RestaurantRepositoryImpl implements IRestaurantRepository {
 
@@ -41,5 +44,22 @@ public class RestaurantRepositoryImpl implements IRestaurantRepository {
                 .orElseThrow(() -> new EntityNotFoundException("Restaurant not found"));
 
         return mapper.FromEntityDomain(restaurantEntity);
+    }
+
+    @Override
+    public Restaurant findRestaurantByCep(String cep) {
+        RestaurantEntity restaurant = restaurantRepository.findByCep(cep);
+
+        return mapper.FromEntityDomain(restaurant);
+    }
+
+    @Override
+    public List<Restaurant> findRestaurantByCuisineType(String cuisineType) {
+        List<RestaurantEntity> restaurantEntityList = restaurantRepository.findAllByCuisineType(cuisineType);
+
+        return restaurantEntityList
+                .stream().
+                map(mapper::FromEntityDomain)
+                .collect(Collectors.toList());
     }
 }

@@ -2,9 +2,19 @@ package com.fiap.restaurant_management.infra.persistence.repository;
 
 import com.fiap.restaurant_management.infra.persistence.entities.RestaurantEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface RestaurantRepository extends JpaRepository<RestaurantEntity, Long> {
-    Optional<RestaurantEntity> findByName(String name);
+
+    @Query("SELECT r FROM restaurant r WHERE r.name LIKE :name%")
+    Optional<RestaurantEntity> findByName(@Param("name") String name);
+
+    @Query("SELECT r FROM restaurant r WHERE r.location.cep = :cep")
+    RestaurantEntity findByCep(@Param("cep") String cep);
+
+    List<RestaurantEntity> findAllByCuisineType(String cuisineType);
 }

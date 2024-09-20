@@ -14,4 +14,8 @@ public interface IRestaurantRepository {
 
     Restaurant findRestaurantByName(String name);
 
+    Restaurant findRestaurantByCep(String cep);
+
+    List<Restaurant> findRestaurantByCuisineType(String cuisineType);
+
 }
