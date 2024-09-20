@@ -7,6 +7,7 @@ public class BookingMapperDto {
 
     public static BookingDto toBookingDto(Booking booking) {
         return new BookingDto(
+                booking.getBookingCode(),
                 booking.getReservationDate(),
                 booking.getNumberOfTables(),
                 booking.getStatus(),
@@ -17,6 +18,7 @@ public class BookingMapperDto {
 
     public static BookingDto toBookingDtoStatus(Booking booking) {
         return new BookingDto  (
+                booking.getBookingCode(),
                 booking.getReservationDate(),
                 booking.getNumberOfTables(),
                 booking.getStatus(),
