@@ -4,6 +4,7 @@ import com.fiap.restaurant_management.aplication.gateway.IBookingRepository;
 import com.fiap.restaurant_management.aplication.gateway.ICustomerRepository;
 import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.aplication.usecases.booking.CreateBooking;
+import com.fiap.restaurant_management.aplication.usecases.booking.UpdateBooking;
 import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantById;
 import com.fiap.restaurant_management.aplication.usecases.booking.GetAllBooking;
@@ -27,8 +28,14 @@ public class BookingConfig {
     @Bean
     public BookingController bookingController(CreateBooking createBooking, FindCustomerById customer,
                                                FindRestaurantById restaurant, GetAllBooking getAllBooking,
-                                               BookingMapperDto bookingMapperDto) {
-        return new BookingController(createBooking, customer, restaurant, getAllBooking, bookingMapperDto);
+                                               UpdateBooking updateBooking
+                                               ) {
+        return new BookingController(createBooking, customer, restaurant, getAllBooking, updateBooking);
+    }
+
+    @Bean
+    public UpdateBooking CustomBookingRepository(IBookingRepository bookingRepository) {
+        return new UpdateBooking(bookingRepository);
     }
 
     @Bean

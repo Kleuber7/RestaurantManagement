@@ -1,9 +1,11 @@
 package com.fiap.restaurant_management.infra.gateways;
 
+import com.fiap.restaurant_management.aplication.exception.BookingNotFoundException;
 import com.fiap.restaurant_management.aplication.exception.CustomerNotFoundException;
 import com.fiap.restaurant_management.aplication.exception.RestaurantNotFoundException;
 import com.fiap.restaurant_management.aplication.gateway.IBookingRepository;
 import com.fiap.restaurant_management.domain.entities.Booking;
+import com.fiap.restaurant_management.domain.enums.Status;
 import com.fiap.restaurant_management.infra.mapper.BookingMapper;
 import com.fiap.restaurant_management.infra.persistence.entities.BookingEntity;
 import com.fiap.restaurant_management.infra.persistence.entities.CustomerEntity;
@@ -54,5 +56,22 @@ public class BookingRepositoryImpl  implements IBookingRepository {
         return bookingList.stream()
                 .map( b  -> bookingMapper.toBookingEntityDomain(b))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Booking updateBookingStatus(Long bookingCode, Integer status) {
+        BookingEntity bookingEntity = bookingRepository.findById(bookingCode)
+                .orElseThrow(() -> new BookingNotFoundException(bookingCode) );
+
+        bookingEntity.setStatus(Status.values()[status]);
+
+        var bookingSaved =  bookingRepository.save(bookingEntity);
+
+        return bookingMapper.toBookingEntityDomain(bookingSaved);
+    }
+
+    @Override
+    public Boolean existsBookingCode(Long bookingCode) {
+        return bookingRepository.existsById(bookingCode);
     }
 }

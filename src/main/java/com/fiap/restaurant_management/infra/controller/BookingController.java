@@ -1,6 +1,7 @@
 package com.fiap.restaurant_management.infra.controller;
 
 import com.fiap.restaurant_management.aplication.usecases.booking.CreateBooking;
+import com.fiap.restaurant_management.aplication.usecases.booking.UpdateBooking;
 import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantById;
 import com.fiap.restaurant_management.aplication.usecases.booking.GetAllBooking;
@@ -9,6 +10,7 @@ import com.fiap.restaurant_management.domain.entities.Customer;
 import com.fiap.restaurant_management.domain.entities.Restaurant;
 import com.fiap.restaurant_management.infra.controller.mapper.BookingMapperDto;
 import com.fiap.restaurant_management.infra.dto.BookingDto;
+import com.fiap.restaurant_management.infra.dto.BookingStatusDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -30,7 +32,8 @@ public class BookingController {
     private final FindCustomerById findCustomerByIdUseCase;
     private final FindRestaurantById findRestaurantByIdUseCase;
     private final GetAllBooking getAllBookingUseCase;
-    private final BookingMapperDto bookingMapperDto;
+    private final UpdateBooking updateBookingUseCase;
+
 
     @PostMapping
     public ResponseEntity<BookingDto> createBooking(@RequestBody BookingDto dto) {
@@ -62,5 +65,13 @@ public class BookingController {
        Page<BookingDto> bookingDtoPage = new PageImpl<>(bookingDtoList);
 
        return ResponseEntity.status(HttpStatus.OK).body(bookingDtoPage);
+    }
+
+    @PutMapping
+    public ResponseEntity<BookingDto> updateBooking(@RequestBody BookingStatusDto bookingStatusDto) {
+        Booking booking = updateBookingUseCase.updateBooking(bookingStatusDto.BookingCode(), bookingStatusDto.status());
+
+        BookingDto bookingDto = BookingMapperDto.toBookingDto(booking);
+        return ResponseEntity.status(HttpStatus.OK).body(bookingDto);
     }
 }
