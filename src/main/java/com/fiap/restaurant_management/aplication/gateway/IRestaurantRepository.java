@@ -2,6 +2,8 @@ package com.fiap.restaurant_management.aplication.gateway;
 
 import com.fiap.restaurant_management.domain.entities.Restaurant;
 
+import java.util.List;
+
 public interface IRestaurantRepository {
 
     Restaurant createRestaurant(Restaurant restaurant);
@@ -9,4 +11,7 @@ public interface IRestaurantRepository {
     Boolean existByRestaurantCode(Long restaurantCode);
 
     Restaurant getRestaurantById(Long restaurantCode);
+
+    Restaurant findRestaurantByName(String name);
+
 }

@@ -2,6 +2,10 @@ package com.fiap.restaurant_management.config;
 
 import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.CreateRestaurant;
+import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantByName;
+import com.fiap.restaurant_management.infra.controller.RestaurantController;
+import com.fiap.restaurant_management.infra.controller.mapper.LocationMapperDto;
+import com.fiap.restaurant_management.infra.controller.mapper.RestaurantMapperDto;
 import com.fiap.restaurant_management.infra.gateways.RestaurantRepositoryImpl;
 import com.fiap.restaurant_management.infra.mapper.LocationMapper;
 import com.fiap.restaurant_management.infra.mapper.RestaurantMapper;
@@ -30,5 +34,27 @@ public class RestaurantConfig {
     @Bean
     LocationMapper locationMapper() {
         return new LocationMapper();
+    }
+
+    @Bean
+    public RestaurantController restaurantController(CreateRestaurant restaurant,
+                                                     FindRestaurantByName findRestaurantByName,
+                                                     RestaurantMapperDto restaurantMapperDto)  {
+        return new RestaurantController(restaurant, findRestaurantByName, restaurantMapperDto);
+    }
+
+    @Bean
+    public FindRestaurantByName findRestaurantByName(IRestaurantRepository repository) {
+        return new FindRestaurantByName(repository);
+    }
+
+    @Bean
+    public RestaurantMapperDto restaurantMapperDto(LocationMapperDto locationMapperDto) {
+        return new RestaurantMapperDto(locationMapperDto);
+    }
+
+    @Bean
+    public LocationMapperDto locationMapperDto() {
+        return  new LocationMapperDto();
     }
 }
