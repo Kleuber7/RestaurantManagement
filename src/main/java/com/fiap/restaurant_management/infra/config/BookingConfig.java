@@ -1,4 +1,4 @@
-package com.fiap.restaurant_management.config;
+package com.fiap.restaurant_management.infra.config;
 
 import com.fiap.restaurant_management.aplication.gateway.IBookingRepository;
 import com.fiap.restaurant_management.aplication.gateway.ICustomerRepository;
