@@ -9,7 +9,7 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {
 
     @Query("SELECT COUNT(b) > 0 FROM booking b WHERE " +
             "b.customer.customerCode = :customerCode " +
-            "AND b.restaurant.restaurantCode = :restaurantCode AND b.status = 'FINISHED' ")
+            "AND b.restaurant.restaurantCode = :restaurantCode AND b.status = 4")
     Boolean hightCheck(@Param("customerCode") Long customerCode,
                        @Param("restaurantCode") Long restaurantCode);
 }

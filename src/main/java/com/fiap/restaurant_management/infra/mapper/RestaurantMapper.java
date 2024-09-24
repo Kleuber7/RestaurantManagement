@@ -9,7 +9,7 @@ public class RestaurantMapper {
 
     private final LocationMapper mapper;
 
-    public RestaurantEntity ToEntity(Restaurant restaurant) {
+    public RestaurantEntity toEntity(Restaurant restaurant) {
         return new RestaurantEntity(
                 restaurant.getName(),
                 mapper.toEntity(restaurant.getLocation()),
@@ -20,7 +20,7 @@ public class RestaurantMapper {
         );
     }
 
-    public Restaurant FromEntityDomain(RestaurantEntity restaurantEntity) {
+    public Restaurant fromEntityDomain(RestaurantEntity restaurantEntity) {
         return new Restaurant(
                 restaurantEntity.getRestaurantCode(),
                 restaurantEntity.getName(),

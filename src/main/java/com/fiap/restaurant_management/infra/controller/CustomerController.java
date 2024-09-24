@@ -21,7 +21,7 @@ public class CustomerController {
     public ResponseEntity<CustomerDto> createCustomers(@RequestBody CustomerDto dto) {
         Customer customerDomain = createCustomer.registerCustomer(new Customer(dto.name(), dto.email(), dto.phone()));
 
-        var customerDto = new CustomerDto(customerDomain.getName(), customerDomain.getEmail(), customerDomain.getPhone());
+        var customerDto = new CustomerDto(customerDomain.getCustomerCode(), customerDomain.getName(), customerDomain.getEmail(), customerDomain.getPhone());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(customerDto);
     }
@@ -31,6 +31,6 @@ public class CustomerController {
         Customer customer = findCustomerByIdUseCase.searchCustomerById(id);
 
         return ResponseEntity.status(HttpStatus.OK)
-                .body(new CustomerDto(customer.getName(), customer.getEmail(), customer.getPhone()));
+                .body(new CustomerDto(customer.getCustomerCode(), customer.getName(), customer.getEmail(), customer.getPhone()));
     }
 }

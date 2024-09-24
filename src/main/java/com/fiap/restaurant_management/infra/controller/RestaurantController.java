@@ -30,6 +30,7 @@ public class RestaurantController {
     @PostMapping
     public ResponseEntity<RestaurantDto> createRestaurant(@RequestBody RestaurantDto dto) {
         Restaurant restaurantDomain = useCaseRestaurant.createRestaurant(new Restaurant(
+                dto.restaurantCode(),
                 dto.name(),
                 new Location(dto.location().cep(), dto.location().number(), dto.location().complement()),
                 dto.cuisineType(),
@@ -39,22 +40,23 @@ public class RestaurantController {
         ));
 
         RestaurantDto restaurantDto = new RestaurantDto(
+                restaurantDomain.getRestaurantCode(),
                 restaurantDomain.getName(),
                 new LocationDto(
                         restaurantDomain.getLocation().getCep(),
                         restaurantDomain.getLocation().getNumber(),
                         restaurantDomain.getLocation().getComplement()
-                        ),
+                ),
                 restaurantDomain.getCuisineType(),
                 restaurantDomain.getTotalTables(),
                 restaurantDomain.getOpeningHours(),
                 restaurantDomain.getClosingTime()
-                );
+        );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(restaurantDto);
     }
 
-    @GetMapping
+    @GetMapping("/name")
     public ResponseEntity<RestaurantDto> findRestaurantByName(@RequestBody RestaurantNameDto name) {
         Restaurant restaurant = useCaseFindRestaurantByName.findRestaurantByName(name.name());
 
@@ -73,7 +75,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/cuisine-type")
-    public ResponseEntity<List<RestaurantDto>> findRestaurantByCuisineType(@RequestParam("cuisine") RestaurantCuisineTypeDto cuisineType){
+    public ResponseEntity<List<RestaurantDto>> findRestaurantByCuisineType(@RequestParam("cuisine") RestaurantCuisineTypeDto cuisineType) {
         List<Restaurant> restaurantList = useCaseFindRestaurantBycuisineType
                 .findRestaurantByCuisineType(cuisineType.CuisineType());
 

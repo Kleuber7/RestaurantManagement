@@ -8,6 +8,8 @@ import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.aplication.gateway.IReviewRepository;
 import com.fiap.restaurant_management.domain.entities.Review;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequiredArgsConstructor
 public class CreateReview {
@@ -15,6 +17,9 @@ public class CreateReview {
     private final IReviewRepository reviewRepository;
     private final IRestaurantRepository restaurantRepository;
     private final ICustomerRepository customerRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(CreateReview.class);
+
 
     public Review creatReview(Review review, Long restaurantCode, Long customerCode) {
 

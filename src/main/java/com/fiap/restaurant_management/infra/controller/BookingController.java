@@ -1,10 +1,10 @@
 package com.fiap.restaurant_management.infra.controller;
 
 import com.fiap.restaurant_management.aplication.usecases.booking.CreateBooking;
+import com.fiap.restaurant_management.aplication.usecases.booking.GetAllBooking;
 import com.fiap.restaurant_management.aplication.usecases.booking.UpdateBooking;
 import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantById;
-import com.fiap.restaurant_management.aplication.usecases.booking.GetAllBooking;
 import com.fiap.restaurant_management.domain.entities.Booking;
 import com.fiap.restaurant_management.domain.entities.Customer;
 import com.fiap.restaurant_management.domain.entities.Restaurant;
@@ -34,19 +34,18 @@ public class BookingController {
     private final GetAllBooking getAllBookingUseCase;
     private final UpdateBooking updateBookingUseCase;
 
-
     @PostMapping
     public ResponseEntity<BookingDto> createBooking(@RequestBody BookingDto dto) {
         Customer customer = findCustomerByIdUseCase.searchCustomerById(dto.customer());
         Restaurant restaurant = findRestaurantByIdUseCase.findRestaurantById(dto.restaurant());
 
         Booking bookingDomain = createBookingUseCase.createBooking(new Booking(
-                        dto.reservationDate(),
-                        dto.numberOfTables(),
-                        customer,
-                        restaurant
-                )
-                , dto.restaurant(), dto.customer());
+                dto.reservationDate(),
+                dto.numberOfTables(),
+                dto.status(),
+                customer,
+                restaurant
+        ), dto.restaurant(), dto.customer());
 
         var bookingDto = BookingMapperDto.toBookingDto(bookingDomain);
 
@@ -59,18 +58,18 @@ public class BookingController {
         List<Booking> bookingList = getAllBookingUseCase
                 .getAllBooking(pageable.getPageNumber(), pageable.getPageSize());
 
-        List<BookingDto> bookingDtoList = bookingList.stream().map(BookingMapperDto::toBookingDtoStatus)
+        List<BookingDto> bookingDtoList = bookingList.stream().map(BookingMapperDto::toBookingDto)
                 .collect(Collectors.toList());
 
-       Page<BookingDto> bookingDtoPage = new PageImpl<>(bookingDtoList);
+        Page<BookingDto> bookingDtoPage = new PageImpl<>(bookingDtoList);
 
-       return ResponseEntity.status(HttpStatus.OK).body(bookingDtoPage);
+        return ResponseEntity.status(HttpStatus.OK).body(bookingDtoPage);
     }
 
-    @PutMapping
-    public ResponseEntity<BookingDto> updateBooking(@RequestBody BookingStatusDto bookingStatusDto) {
-        Booking booking = updateBookingUseCase.updateBooking(bookingStatusDto.BookingCode(), bookingStatusDto.status());
-
+    @PutMapping("/{bookingCode}")
+    public ResponseEntity<BookingDto> updateBooking(@PathVariable Long bookingCode,
+                                                    @RequestBody BookingStatusDto bookingStatusDto) {
+        Booking booking = updateBookingUseCase.updateBooking(bookingCode, bookingStatusDto.status());
         BookingDto bookingDto = BookingMapperDto.toBookingDto(booking);
         return ResponseEntity.status(HttpStatus.OK).body(bookingDto);
     }

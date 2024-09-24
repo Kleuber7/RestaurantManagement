@@ -11,10 +11,10 @@ import java.util.Optional;
 public interface RestaurantRepository extends JpaRepository<RestaurantEntity, Long> {
 
     @Query("SELECT r FROM restaurant r WHERE r.name LIKE :name%")
-    Optional<RestaurantEntity> findByName(@Param("name") String name);
+    List<RestaurantEntity> findByName(@Param("name") String name);
 
     @Query("SELECT r FROM restaurant r WHERE r.location.cep = :cep")
-    RestaurantEntity findByCep(@Param("cep") String cep);
+    List<RestaurantEntity> findByCep(@Param("cep") String cep);
 
     List<RestaurantEntity> findAllByCuisineType(String cuisineType);
 }

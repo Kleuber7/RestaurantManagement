@@ -13,9 +13,13 @@ import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepos
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequiredArgsConstructor
 public class ReviewRepositoryImpl implements IReviewRepository {
+
+    private static final Logger logger = LoggerFactory.getLogger(ReviewRepositoryImpl.class);
 
     private final ReviewRepository reviewRepository;
     private final CustomerRepository customerRepository;
@@ -42,6 +46,7 @@ public class ReviewRepositoryImpl implements IReviewRepository {
 
         return reviewMapper.toEntityDomain(reviewEntity);
     }
+
 
     @Override
     public Boolean customerCanMakeMvaluation(Long customerCode, Long restaurantCode) {

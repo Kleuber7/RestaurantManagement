@@ -14,7 +14,7 @@ public class ReviewMapper {
         return new ReviewEntity(
                 review.getRating(),
                 review.getComment(),
-                restaurantMapper.ToEntity(review.getRestaurant()),
+                restaurantMapper.toEntity(review.getRestaurant()),
                 customerMapper.toEntity(review.getCustomer())
         );
     }
@@ -24,7 +24,7 @@ public class ReviewMapper {
                 reviewEntity.getReviewCode(),
                 reviewEntity.getRating(),
                 reviewEntity.getComment(),
-                restaurantMapper.FromEntityDomain(reviewEntity.getRestaurant()),
+                restaurantMapper.fromEntityDomain(reviewEntity.getRestaurant()),
                 customerMapper.toCustomer(reviewEntity.getCustomer())
         );
     }

@@ -20,9 +20,9 @@ public class RestaurantRepositoryImpl implements IRestaurantRepository {
 
     @Override
     public Restaurant createRestaurant(Restaurant restaurant) {
-        RestaurantEntity domainEntity = mapper.ToEntity(restaurant);
+        RestaurantEntity domainEntity = mapper.toEntity(restaurant);
         restaurantRepository.save(domainEntity);
-        return mapper.FromEntityDomain(domainEntity);
+        return mapper.fromEntityDomain(domainEntity);
     }
 
     @Override
@@ -35,22 +35,25 @@ public class RestaurantRepositoryImpl implements IRestaurantRepository {
         var restaurantEntity =  restaurantRepository.findById(restaurantCode)
                 .orElseThrow(() -> new RestaurantNotFoundException(restaurantCode));
 
-        return mapper.FromEntityDomain(restaurantEntity);
+        return mapper.fromEntityDomain(restaurantEntity);
     }
 
     @Override
     public Restaurant findRestaurantByName(String name) {
         RestaurantEntity restaurantEntity = restaurantRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("Restaurant not found"));
-
-        return mapper.FromEntityDomain(restaurantEntity);
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new RestaurantNotFoundException(name));
+        return mapper.fromEntityDomain(restaurantEntity);
     }
 
     @Override
     public Restaurant findRestaurantByCep(String cep) {
-        RestaurantEntity restaurant = restaurantRepository.findByCep(cep);
-
-        return mapper.FromEntityDomain(restaurant);
+        RestaurantEntity restaurant = restaurantRepository.findByCep(cep)
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new RestaurantNotFoundException(cep));
+        return mapper.fromEntityDomain(restaurant);
     }
 
     @Override
@@ -59,7 +62,7 @@ public class RestaurantRepositoryImpl implements IRestaurantRepository {
 
         return restaurantEntityList
                 .stream().
-                map(mapper::FromEntityDomain)
+                map(mapper::fromEntityDomain)
                 .collect(Collectors.toList());
     }
 }

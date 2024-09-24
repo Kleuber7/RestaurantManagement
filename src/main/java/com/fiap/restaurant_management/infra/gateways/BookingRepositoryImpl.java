@@ -14,10 +14,13 @@ import com.fiap.restaurant_management.infra.persistence.repository.BookingReposi
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -58,17 +61,32 @@ public class BookingRepositoryImpl  implements IBookingRepository {
                 .collect(Collectors.toList());
     }
 
+
     @Override
     public Booking updateBookingStatus(Long bookingCode, Integer status) {
+        if (status == null) {
+            throw new IllegalArgumentException("Status cannot be null");
+        }
+
+        // Verificar se o status é válido antes de atualizar
+        if (!isValidStatus(status)) {
+            throw new IllegalArgumentException("Invalid status value: " + status);
+        }
+
         BookingEntity bookingEntity = bookingRepository.findById(bookingCode)
-                .orElseThrow(() -> new BookingNotFoundException(bookingCode) );
+                .orElseThrow(() -> new BookingNotFoundException(bookingCode));
 
-        bookingEntity.setStatus(Status.values()[status]);
+        bookingEntity.setStatus(status);
 
-        var bookingSaved =  bookingRepository.save(bookingEntity);
+        BookingEntity bookingSaved = bookingRepository.save(bookingEntity);
 
         return bookingMapper.toBookingEntityDomain(bookingSaved);
     }
+
+    private boolean isValidStatus(Integer status) {
+             return status >= 1 && status <= 4;
+    }
+
 
     @Override
     public Boolean existsBookingCode(Long bookingCode) {

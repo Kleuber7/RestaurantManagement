@@ -19,7 +19,7 @@ public class BookingMapper {
                 booking.getNumberOfTables(),
                 booking.getStatus(),
                 customerEntityMapper.toEntity(booking.getCustomer()),
-                restaurantEntityMapper.ToEntity(booking.getRestaurant())
+                restaurantEntityMapper.toEntity(booking.getRestaurant())
                 );
     }
 
@@ -30,7 +30,7 @@ public class BookingMapper {
                 bookingEntity.getNumberOfTables(),
                 bookingEntity.getStatus(),
                 customerEntityMapper.toCustomer(bookingEntity.getCustomer()),
-                restaurantEntityMapper.FromEntityDomain(bookingEntity.getRestaurant())
+                restaurantEntityMapper.fromEntityDomain(bookingEntity.getRestaurant())
 
         );
     }

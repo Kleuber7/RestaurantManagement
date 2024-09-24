@@ -27,7 +27,7 @@ public class RestaurantEntity {
 
     private String cuisineType;
 
-    private LocalTime openingHours ;
+    private LocalTime openingHours;
 
     private LocalTime closingTime;
 
