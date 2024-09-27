@@ -12,6 +12,10 @@ import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRep
 import com.fiap.restaurant_management.templateDto.BookingTemplateDto;
 import com.fiap.restaurant_management.templateDto.CustomerTemplateDto;
 import com.fiap.restaurant_management.templateDto.RestaurantTemplateDto;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.restassured.AllureRestAssured;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +83,11 @@ public class BookingIT {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     void createBooking() throws Exception {
+
+        RestAssured.filters(new AllureRestAssured());
+
         CustomerEntity customer = saveCustomer();
         RestaurantEntity restaurant = saveRestaurant();
 

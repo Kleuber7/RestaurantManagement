@@ -12,6 +12,8 @@ import com.fiap.restaurant_management.templateDto.BookingTemplateDto;
 import com.fiap.restaurant_management.templateDto.CustomerTemplateDto;
 import com.fiap.restaurant_management.templateDto.RestaurantTemplateDto;
 import com.fiap.restaurant_management.templateDto.ReviewTemplateDto;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,6 +114,7 @@ public class ReviewIT {
 
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     void createReview() throws Exception {
         CustomerEntity customer = saveCustomer();
         RestaurantEntity restaurant = saveRestaurant();

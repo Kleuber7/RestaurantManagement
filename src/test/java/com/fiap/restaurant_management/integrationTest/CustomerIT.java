@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiap.restaurant_management.infra.dto.CustomerDto;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import com.fiap.restaurant_management.templateDto.CustomerTemplateDto;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,6 +57,7 @@ public class CustomerIT {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     void createCustomer() throws Exception {
         CustomerDto createdCustomer = saveCustomer();
         CustomerDto request = CustomerTemplateDto.customerTemplate();
@@ -64,6 +67,7 @@ public class CustomerIT {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
     void getCustomerById() throws Exception {
         CustomerDto createdCustomer = saveCustomer();
         Long customerId = createdCustomer.customerCode();
@@ -80,6 +84,7 @@ public class CustomerIT {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
     void getCustomerByIdNotFound() throws Exception {
         long nonExistentCustomerId = 999L;
 

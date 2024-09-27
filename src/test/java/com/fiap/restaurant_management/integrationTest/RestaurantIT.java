@@ -8,6 +8,8 @@ import com.fiap.restaurant_management.infra.dto.RestaurantDto;
 import com.fiap.restaurant_management.infra.dto.RestaurantNameDto;
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
 import com.fiap.restaurant_management.templateDto.RestaurantTemplateDto;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +74,7 @@ public class RestaurantIT {
 
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     void createAndGetRestaurantByName() throws Exception {
         RestaurantDto createdRestaurant = saveRestaurant();
         String name = createdRestaurant.name();
@@ -89,6 +92,7 @@ public class RestaurantIT {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     void createAndGetRestaurantByCep() throws Exception {
         RestaurantDto createdRestaurant = saveRestaurant();
         String cep = createdRestaurant.location().cep();
@@ -106,6 +110,7 @@ public class RestaurantIT {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     void createAndGetRestaurantByCuisineType() throws Exception {
         RestaurantDto createdRestaurant = saveRestaurant();
         String cuisineType = createdRestaurant.cuisineType();
