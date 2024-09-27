@@ -1,18 +1,17 @@
 package com.fiap.restaurant_management.integrationTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fiap.restaurant_management.infra.dto.*;
-import com.fiap.restaurant_management.infra.persistence.entities.BookingEntity;
+import com.fiap.restaurant_management.infra.dto.BookingDto;
+import com.fiap.restaurant_management.infra.dto.CustomerDto;
+import com.fiap.restaurant_management.infra.dto.RestaurantDto;
 import com.fiap.restaurant_management.infra.persistence.entities.CustomerEntity;
 import com.fiap.restaurant_management.infra.persistence.entities.RestaurantEntity;
 import com.fiap.restaurant_management.infra.persistence.repository.BookingRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
-import com.fiap.restaurant_management.infra.persistence.repository.ReviewRepository;
 import com.fiap.restaurant_management.templateDto.BookingTemplateDto;
 import com.fiap.restaurant_management.templateDto.CustomerTemplateDto;
 import com.fiap.restaurant_management.templateDto.RestaurantTemplateDto;
-import com.fiap.restaurant_management.templateDto.ReviewTemplateDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +23,11 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ReviewIntegrationTest {
+public class BookingIT {
 
     @Autowired
     private MockMvc mockMvc;
@@ -39,7 +36,7 @@ public class ReviewIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private ReviewRepository reviewRepository;
+    private BookingRepository bookingRepository;
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -47,15 +44,11 @@ public class ReviewIntegrationTest {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    @Autowired
-    private BookingRepository bookingRepository;
-
     @BeforeEach
     void setUp() {
-        reviewRepository.deleteAll();
+        bookingRepository.deleteAll();
         customerRepository.deleteAll();
         restaurantRepository.deleteAll();
-        bookingRepository.deleteAll();
         objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
         objectMapper.configure(com.fasterxml.jackson.core.JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
@@ -70,8 +63,7 @@ public class ReviewIntegrationTest {
                 .andExpect(status().isCreated())
                 .andReturn();
         String postResponse = result.getResponse().getContentAsString();
-        CustomerEntity createdCustomer = objectMapper.readValue(postResponse, CustomerEntity.class);
-        return createdCustomer;
+        return objectMapper.readValue(postResponse, CustomerEntity.class);
     }
 
     private RestaurantEntity saveRestaurant() throws Exception {
@@ -83,12 +75,16 @@ public class ReviewIntegrationTest {
                 .andExpect(status().isCreated())
                 .andReturn();
         String postResponse = result.getResponse().getContentAsString();
-        RestaurantEntity createdRestaurant = objectMapper.readValue(postResponse, RestaurantEntity.class);
-        return createdRestaurant;
+        return objectMapper.readValue(postResponse, RestaurantEntity.class);
     }
 
-    private void saveBooking(Long customerCode, Long restaurantCode) throws Exception {
-        BookingDto request = BookingTemplateDto.bookingTemplate(customerCode, restaurantCode);
+    @Test
+    void createBooking() throws Exception {
+        CustomerEntity customer = saveCustomer();
+        RestaurantEntity restaurant = saveRestaurant();
+
+        BookingDto request = BookingTemplateDto.bookingTemplate(customer.getCustomerCode(), restaurant.getRestaurantCode());
+
         MvcResult result = mockMvc.perform(post("/booking")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
@@ -96,43 +92,13 @@ public class ReviewIntegrationTest {
                 .andExpect(status().isCreated())
                 .andReturn();
 
-        BookingDto createdBooking = objectMapper.readValue(result.getResponse().getContentAsString(), BookingDto.class);
-        updateBookingStatus(createdBooking.bookingCode(), 4);
-    }
-
-    private void updateBookingStatus(Long bookingCode, int status) throws Exception {
-        BookingStatusDto request = BookingStatusDto.builder()
-                .status(status)
-                .build();
-        mockMvc.perform(put("/booking/" + bookingCode)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("UTF-8")
-                        .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isOk());
-    }
-
-
-    @Test
-    void createReview() throws Exception {
-        CustomerEntity customer = saveCustomer();
-        RestaurantEntity restaurant = saveRestaurant();
-        saveBooking(customer.getCustomerCode(), restaurant.getRestaurantCode());
-
-        ReviewDto request = ReviewTemplateDto.reviewTemplate(customer.getCustomerCode(), restaurant.getRestaurantCode());
-
-        MvcResult result = mockMvc.perform(post("/review")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("UTF-8")
-                        .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isCreated())
-                .andReturn();
-
         String postResponse = result.getResponse().getContentAsString();
-        ReviewDto createdReview = objectMapper.readValue(postResponse, ReviewDto.class);
+        BookingDto createdBooking = objectMapper.readValue(postResponse, BookingDto.class);
 
-        assertEquals(request.rating(), createdReview.rating());
-        assertEquals(request.comment(), createdReview.comment());
-        assertEquals(request.restaurant(), createdReview.restaurant());
-        assertEquals(request.customer(), createdReview.customer());
+        assertEquals(request.reservationDate(), createdBooking.reservationDate());
+        assertEquals(request.numberOfTables(), createdBooking.numberOfTables());
+        assertEquals(request.status(), createdBooking.status());
+        assertEquals(request.customer(), createdBooking.customer());
+        assertEquals(request.restaurant(), createdBooking.restaurant());
     }
 }
