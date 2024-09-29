@@ -14,7 +14,5 @@ public record BookingDto(
         Long restaurant
 ) {
 
-    public BookingDto(LocalDateTime reservationDate, Integer numberOfTables, Integer status, Long customer, Long restaurant) {
-        this(null, reservationDate, numberOfTables, status, customer, restaurant);
-    }
+
 }

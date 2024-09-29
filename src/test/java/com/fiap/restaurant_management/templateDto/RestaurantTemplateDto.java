@@ -9,8 +9,6 @@ public class RestaurantTemplateDto {
 
 
     public static RestaurantDto restaurantTemplate() {
-
-
         return RestaurantDto.builder()
                 .name("Restaurante comida brasileira")
                 .location(new LocationDto("33455", 10, "Apt 1"))
@@ -21,9 +19,10 @@ public class RestaurantTemplateDto {
                 .build();
     }
 
-    public static RestaurantDto restaurantTemplate(String name) {
+    public static RestaurantDto restaurantTemplateController() {
         return RestaurantDto.builder()
-                .name(name)
+                .restaurantCode(1L)
+                .name("Restaurante comida brasileira")
                 .location(new LocationDto("33455", 10, "Apt 1"))
                 .cuisineType("brasileira")
                 .totalTables(100)

@@ -68,7 +68,6 @@ public class BookingRepositoryImpl  implements IBookingRepository {
             throw new IllegalArgumentException("Status cannot be null");
         }
 
-        // Verificar se o status é válido antes de atualizar
         if (!isValidStatus(status)) {
             throw new IllegalArgumentException("Invalid status value: " + status);
         }

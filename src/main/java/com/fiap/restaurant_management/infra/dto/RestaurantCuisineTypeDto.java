@@ -4,6 +4,6 @@ import lombok.Builder;
 
 @Builder
 public record RestaurantCuisineTypeDto(
-        String CuisineType
+        String cuisineType
 ) {
 }

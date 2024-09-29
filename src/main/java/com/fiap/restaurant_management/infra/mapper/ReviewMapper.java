@@ -10,14 +10,14 @@ public class ReviewMapper {
     private final RestaurantMapper restaurantMapper;
     private final CustomerMapper customerMapper;
 
-    public ReviewEntity toEntity(Review review) {
-        return new ReviewEntity(
-                review.getRating(),
-                review.getComment(),
-                restaurantMapper.toEntity(review.getRestaurant()),
-                customerMapper.toEntity(review.getCustomer())
-        );
-    }
+//    public ReviewEntity toEntity(Review review) {
+//        return new ReviewEntity(
+//                review.getRating(),
+//                review.getComment(),
+//                restaurantMapper.toEntity(review.getRestaurant()),
+//                customerMapper.toEntity(review.getCustomer())
+//        );
+//    }
 
     public Review toEntityDomain(ReviewEntity reviewEntity) {
         return new Review(

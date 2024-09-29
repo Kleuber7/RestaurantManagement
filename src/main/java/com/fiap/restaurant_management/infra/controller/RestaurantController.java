@@ -77,7 +77,7 @@ public class RestaurantController {
     @GetMapping("/cuisine-type")
     public ResponseEntity<List<RestaurantDto>> findRestaurantByCuisineType(@RequestParam("cuisine") RestaurantCuisineTypeDto cuisineType) {
         List<Restaurant> restaurantList = useCaseFindRestaurantBycuisineType
-                .findRestaurantByCuisineType(cuisineType.CuisineType());
+                .findRestaurantByCuisineType(cuisineType.cuisineType());
 
         List<RestaurantDto> restaurantDtoList = restaurantList
                 .stream()
