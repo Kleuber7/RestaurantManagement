@@ -32,6 +32,19 @@ jobs:
           echo "PORT_POSTGRES=5432" >> $GITHUB_ENV
           echo "USER_POSTGRES=postgres" >> $GITHUB_ENV
           echo "PASSWORD_POSTGRES=postgre" >> $GITHUB_ENV
+    - name: Criar settings.xml com espelho Sonatype
+      run: |
+          mkdir -p ~/.m2
+          echo '<settings>' >> ~/.m2/settings.xml
+          echo '  <mirrors>' >> ~/.m2/settings.xml
+          echo '    <mirror>' >> ~/.m2/settings.xml
+          echo '      <id>sonatype</id>' >> ~/.m2/settings.xml
+          echo '      <mirrorOf>central</mirrorOf>' >> ~/.m2/settings.xml
+          echo '      <url>https://oss.sonatype.org/content/repositories/central/</url>' >> ~/.m2/settings.xml
+          echo '      <blocked>false</blocked>' >> ~/.m2/settings.xml
+          echo '    </mirror>' >> ~/.m2/settings.xml
+          echo '  </mirrors>' >> ~/.m2/settings.xml
+          echo '</settings>' >> ~/.m2/settings.xml
     - name: Clean Maven cache
       run: rm -rf ~/.m2/repository
     - name: Build with Maven
