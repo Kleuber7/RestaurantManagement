@@ -32,6 +32,8 @@ jobs:
           echo "PORT_POSTGRES=5432" >> $GITHUB_ENV
           echo "USER_POSTGRES=postgres" >> $GITHUB_ENV
           echo "PASSWORD_POSTGRES=postgre" >> $GITHUB_ENV
+    - name: Clean Maven cache
+      run: rm -rf ~/.m2/repository
     - name: Build with Maven
       run: mvn package
     - name: Run All Test
