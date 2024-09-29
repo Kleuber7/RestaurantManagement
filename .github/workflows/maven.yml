@@ -33,9 +33,6 @@ jobs:
           echo "USER_POSTGRES=postgres" >> $GITHUB_ENV
           echo "PASSWORD_POSTGRES=postgre" >> $GITHUB_ENV
 
-    - name: Verificar conteúdo do settings.xml
-      run: cat ~/.m2/settings.xml
-
     - name: Criar settings.xml com espelho Sonatype
       run: |
         mkdir -p ~/.m2
@@ -51,6 +48,10 @@ jobs:
         echo '    </mirror>' >> ~/.m2/settings.xml
         echo '  </mirrors>' >> ~/.m2/settings.xml
         echo '</settings>' >> ~/.m2/settings.xml
+
+    - name: Verificar conteúdo do settings.xml
+      run: cat ~/.m2/settings.xml
+
     - name: Clean Maven cache
       run: rm -rf ~/.m2/repository
     - name: Build with Maven
