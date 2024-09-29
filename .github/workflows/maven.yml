@@ -62,8 +62,6 @@ jobs:
         echo '    <activeProfile>default</activeProfile>' >> ~/.m2/settings.xml
         echo '  </activeProfiles>' >> ~/.m2/settings.xml
         echo '</settings>' >> ~/.m2/settings.xml
-
-
     - name: Verificar conteúdo do settings.xml
       run: cat ~/.m2/settings.xml
 
