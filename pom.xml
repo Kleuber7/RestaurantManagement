@@ -238,6 +238,7 @@
                             </includes>
                             <excludes combine.self="override">
                                 <exclude>**/*Test.java</exclude>
+                                <!--tudo que não for teste de integração deve ser ignorado-->
                             </excludes>
                             <properties>
                                 <configurationParameters>
