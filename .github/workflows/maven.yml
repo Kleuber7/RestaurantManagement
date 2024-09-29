@@ -47,7 +47,22 @@ jobs:
         echo '      <url>https://oss.sonatype.org/content/repositories/central/</url>' >> ~/.m2/settings.xml
         echo '    </mirror>' >> ~/.m2/settings.xml
         echo '  </mirrors>' >> ~/.m2/settings.xml
+        echo '  <profiles>' >> ~/.m2/settings.xml
+        echo '    <profile>' >> ~/.m2/settings.xml
+        echo '      <id>default</id>' >> ~/.m2/settings.xml
+        echo '      <repositories>' >> ~/.m2/settings.xml
+        echo '        <repository>' >> ~/.m2/settings.xml
+        echo '          <id>central</id>' >> ~/.m2/settings.xml
+        echo '          <url>https://repo.maven.apache.org/maven2</url>' >> ~/.m2/settings.xml
+        echo '        </repository>' >> ~/.m2/settings.xml
+        echo '      </repositories>' >> ~/.m2/settings.xml
+        echo '    </profile>' >> ~/.m2/settings.xml
+        echo '  </profiles>' >> ~/.m2/settings.xml
+        echo '  <activeProfiles>' >> ~/.m2/settings.xml
+        echo '    <activeProfile>default</activeProfile>' >> ~/.m2/settings.xml
+        echo '  </activeProfiles>' >> ~/.m2/settings.xml
         echo '</settings>' >> ~/.m2/settings.xml
+
 
     - name: Verificar conteúdo do settings.xml
       run: cat ~/.m2/settings.xml
