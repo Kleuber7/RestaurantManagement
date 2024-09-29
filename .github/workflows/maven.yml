@@ -27,6 +27,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Set up Environment Variables
+      run: |
+          echo "PORT_POSTGRES=5432" >> $GITHUB_ENV
+          echo "USER_POSTGRES=postgres" >> $GITHUB_ENV
+          echo "PASSWORD_POSTGRES=postgre" >> $GITHUB_ENV
     - name: Build with Maven
       run: mvn package
     - name: Run All Test
