@@ -32,39 +32,6 @@ jobs:
           echo "PORT_POSTGRES=5432" >> $GITHUB_ENV
           echo "USER_POSTGRES=postgres" >> $GITHUB_ENV
           echo "PASSWORD_POSTGRES=postgre" >> $GITHUB_ENV
-
-    - name: Criar settings.xml com espelho Sonatype
-      run: |
-        mkdir -p ~/.m2
-        echo '<?xml version="1.0" encoding="UTF-8"?>' > ~/.m2/settings.xml
-        echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"' >> ~/.m2/settings.xml
-        echo '          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' >> ~/.m2/settings.xml
-        echo '          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">' >> ~/.m2/settings.xml
-        echo '  <mirrors>' >> ~/.m2/settings.xml
-        echo '    <mirror>' >> ~/.m2/settings.xml
-        echo '      <id>sonatype</id>' >> ~/.m2/settings.xml
-        echo '      <mirrorOf>central</mirrorOf>' >> ~/.m2/settings.xml
-        echo '      <url>https://oss.sonatype.org/content/repositories/central/</url>' >> ~/.m2/settings.xml
-        echo '    </mirror>' >> ~/.m2/settings.xml
-        echo '  </mirrors>' >> ~/.m2/settings.xml
-        echo '  <profiles>' >> ~/.m2/settings.xml
-        echo '    <profile>' >> ~/.m2/settings.xml
-        echo '      <id>default</id>' >> ~/.m2/settings.xml
-        echo '      <repositories>' >> ~/.m2/settings.xml
-        echo '        <repository>' >> ~/.m2/settings.xml
-        echo '          <id>central</id>' >> ~/.m2/settings.xml
-        echo '          <url>https://repo.maven.apache.org/maven2</url>' >> ~/.m2/settings.xml
-        echo '        </repository>' >> ~/.m2/settings.xml
-        echo '      </repositories>' >> ~/.m2/settings.xml
-        echo '    </profile>' >> ~/.m2/settings.xml
-        echo '  </profiles>' >> ~/.m2/settings.xml
-        echo '  <activeProfiles>' >> ~/.m2/settings.xml
-        echo '    <activeProfile>default</activeProfile>' >> ~/.m2/settings.xml
-        echo '  </activeProfiles>' >> ~/.m2/settings.xml
-        echo '</settings>' >> ~/.m2/settings.xml
-    - name: Verificar conteúdo do settings.xml
-      run: cat ~/.m2/settings.xml
-
     - name: Clean Maven cache
       run: rm -rf ~/.m2/repository
     - name: Build with Maven
