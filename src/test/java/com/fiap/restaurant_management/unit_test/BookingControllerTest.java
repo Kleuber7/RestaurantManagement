@@ -59,7 +59,7 @@ public class BookingControllerTest {
     public void testCreateBooking() throws Exception {
         BookingDto bookingDto = BookingDto.builder()
                 .bookingCode(1L)
-                .reservationDate(LocalDateTime.now())
+                .reservationDate(LocalDateTime.of(2024, 9, 29, 15, 30))
                 .numberOfTables(2)
                 .status(1)
                 .customer(1L)
