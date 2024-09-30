@@ -4,7 +4,8 @@ build:
 
 unit-test:
 	@echo "Running unit tests"
-	@mvn test
+	@mvn test -P unit-test
+
 
 integration-test:
 	mvn test -P integration-test
@@ -15,7 +16,7 @@ system-test:
 performance-test:
 	mvn gatling:test -P performance-test
 
-test: unit-test integration-test
+test: unit-test integration-test system-test
 
 package:
 	mvn package

@@ -227,6 +227,31 @@
     </build>
 
     <profiles>
+        <!-- Unit test profile-->
+
+        <profile>
+            <id>unit-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.5.0</version>
+                        <configuration>
+                            <includes combine.self="override">
+                                <include>**/*Test.java</include>
+
+                            </includes>
+                            <excludes>
+                                <exclude>**/integrationTest/*IT.java</exclude>
+                                <exclude>com/fiap/restaurant_management/bdd_cucumber_test/**</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <!-- Integration test profile-->
 
         <profile>
