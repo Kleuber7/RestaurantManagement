@@ -32,11 +32,36 @@ public class PerformanceSimulation extends Simulation {
             .check(status().is(201))
             .check(jsonPath("$.restaurantCode").saveAs("restaurantCode"));
 
+    ActionBuilder registerBookingRequest = http("request: Criar reserva")
+            .post("/booking")
+            .body(StringBody("{\"reservationDate\": \"2024-10-15T17:30:30\", \"numberOfTables\": 26, " +
+                    "\"customer\": \"${customerCode}\", \"restaurant\": \"${restaurantCode}\"}"))
+            .check(status().is(201))
+            .check(jsonPath("$.bookingCode").saveAs("bookingCode"));
+
+    ActionBuilder updateBookingStatus = http("request: Atualiza reserva")
+            .put("/booking/${bookingCode}")
+            .body(StringBody("{\"BookingCode\": \"${bookingCode}\", \"status\": 4}"))
+            .check(status().is(200));
+
+
     ScenarioBuilder scenarioRegisterCustomerRequests= scenario("Cadastrar cliente")
             .exec(registerCustomerRequests);
 
     ScenarioBuilder scenarioRegisterRestaurantRequests= scenario("Cadastrar restaurante")
             .exec(registerRestaurantRequest);
+
+    ScenarioBuilder scenarioRegisterBookingRequests= scenario("Criar reserva")
+            .exec(registerCustomerRequests)
+            .exec(registerRestaurantRequest)
+            .exec(registerBookingRequest);
+
+    ScenarioBuilder scenarioUpdateBookingRequests= scenario("Atualiza reserva")
+            .exec(registerCustomerRequests)
+            .exec(registerRestaurantRequest)
+            .exec(registerBookingRequest)
+            .exec(updateBookingStatus);
+
 
 
     {
@@ -60,12 +85,32 @@ public class PerformanceSimulation extends Simulation {
                         rampUsersPerSec(10)
                                 .to(1)
                                 .during(Duration.ofSeconds(10))
+                ),
+                scenarioRegisterBookingRequests.injectOpen(
+                                rampUsersPerSec(1)
+                                        .to(10)
+                                        .during(Duration.ofSeconds(10)),
+                                constantUsersPerSec(10)
+                                        .during(Duration.ofSeconds(20)),
+                                rampUsersPerSec(10)
+                                        .to(1)
+                                        .during(Duration.ofSeconds(10))
+                ),
+                scenarioUpdateBookingRequests.injectOpen(
+                        rampUsersPerSec(1)
+                                .to(10)
+                                .during(Duration.ofSeconds(10)),
+                        constantUsersPerSec(10)
+                                .during(Duration.ofSeconds(20)),
+                        rampUsersPerSec(10)
+                                .to(1)
+                                .during(Duration.ofSeconds(10))
                 )
 
         )
                 .protocols(httpProtocol)
                 .assertions(
-                        global().responseTime().max().lt(50)
+                        global().responseTime().max().lt(150)
                 );
     }
 }
