@@ -39,7 +39,7 @@ atender tanto clientes quanto administradores.
     - É possível buscar um cliente pelo seu ID
 
 ### Links úteis
-- Suagger: [Link](http://localhost:8080/swagger-ui/index.html) (OBS: A API precisa está rodando pra funcionar esse link)
+- Swagger: [Link](http://localhost:8080/swagger-ui/index.html) (OBS: A API precisa está rodando pra funcionar esse link)
 - URL na Railway [URL da API para se usar o POSTMAN](https://restaurantmanagement-production-ff9d.up.railway.app)
 
 ----
