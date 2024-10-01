@@ -40,7 +40,7 @@ atender tanto clientes quanto administradores.
     - É possível criar um cliente contendo: Nome, email e telefone
     - É possível buscar um cliente pelo seu ID
 
-### Documentação Swagger: [Link da documentação](http://localhost:8080/swagger-ui/index.html)
+### Documentação Swagger: [Link da documentação](http://localhost:8080/swagger-ui/index.html) (OBS: A API precisa está rodando pra funcionar o link)
 
 ----
 
@@ -70,8 +70,12 @@ atender tanto clientes quanto administradores.
     ```
 
 ## Design Arquitetônico:
-## Clean Code em Testes:
-## Qualidade de Software:
+
+----
+
+# Qualidade de Software:
+
+----
 ## Testes Unitários:
 ## Testes Integrados e Inspeção de Código:
 ## Testes de Integração no Controller, CI e BDD:
