@@ -19,7 +19,7 @@ atender tanto clientes quanto administradores.
 ### Funcionalidades Principais:
 
 - **Cadastro de Restaurantes:**
-    - Os restaurantes podem se cadastrar no sistema, fornecendo informações como nome, localização, tipo de cozinha,
+    - O sistema permite cadastrar restaurantes, fornecendo informações como nome, localização, tipo de cozinha,
       horários de funcionamento e capacidade.
     - O sistema permite: buscar restaurantes por nome
     - O sistema permite: buscar restaurantes por cozinha
