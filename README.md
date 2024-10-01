@@ -9,13 +9,42 @@
 
 # TRABALHO DE CONCLUSÃO - FASE 3 # - DEPLOY, ARQUITETURA E QUALIDADE DE SOFTWARE
 
+## API de Gerenciamento de Restaurantes
 
-### Documentação Swagger
+----
+Esta API permite a interação com um sistema de gerenciamento de restaurantes, fornecendo funcionalidades para criar,
+atualizar, consultar informações relacionadas a restaurantes, reservas e avaliações. A API foi projetada para
+atender tanto clientes quanto administradores.
 
-[Link documentação Swagger](http://localhost:8080/swagger-ui/index.html)
+### Funcionalidades Principais:
 
+- **Cadastro de Restaurantes:**
+    - Os restaurantes podem se cadastrar no sistema, fornecendo informações como nome, localização, tipo de cozinha,
+      horários de funcionamento e capacidade.
+    - O sistema permite: buscar restaurantes por nome
+    - O sistema permite: buscar restaurantes por cozinha
+    - O sistema permite: buscar restaurantes por CEP
+    - Não é permitido criar restaurante com capacidade menor que 20 mesas
+- **Reserva de Mesas:**
+    - O sistema permite criar reservas para datas e horários específicos.
+    - Não é possível criar reserva para um número de pessoa menor que 1
+    - Administradores podem gerenciar reservas e visualizar as informações de disponibilidade.
+    - Não é possível a criação de reservas fora do horário de funcionamento dos restaurantes
+    - Não é possível criar uma reserva se a quantidade de mesas requeridas seja maior que a capacidade do restaurante
+- **Avaliações e Comentários:**
+    - Os clientes podem adicionar avaliações dos restaurantes.
+    - Avaliações incluem classificações de estrelas e comentários detalhados.
+    - O sistema só permite avaliar o restaurante se o usuário fizer uma reserva e ter o status `FINESHED`, garantindo
+      que ele frequentou o restaurante
+- **Clientes:**
+    - É possível criar um cliente contendo: Nome, email e telefone
+    - É possível buscar um cliente pelo seu ID
 
-Para executar o projeto , siga os passos abaixo:
+### Documentação Swagger: [Link da documentação](http://localhost:8080/swagger-ui/index.html)
+
+----
+
+## Para executar o projeto , siga os passos abaixo:
 1.  **Download do projeto no GitHub:**  Primeiro, faça o download do projeto a partir do repositório no GitHub. Você pode clonar o repositório usando o seguinte comando:
 
     ```shell
@@ -39,74 +68,22 @@ Para executar o projeto , siga os passos abaixo:
     ```shell
     java -jar target/RestaurantManagement-1.0-SNAPSHOT.jar
     ```
-## B) Documentação
 
-### 1. Resumo
+## Design Arquitetônico:
+## Clean Code em Testes:
+## Qualidade de Software:
+## Testes Unitários:
+## Testes Integrados e Inspeção de Código:
+## Testes de Integração no Controller, CI e BDD:
+## Testes Não Funcionais:
+## Medir cobertura de teste:
+## Deploy:
 
-**1.1. História**
-
-//TODO
-
-**1.2. Justificativa**
-
-//TODO
-
-O Sistema de Gerenciamento de Devoluções oferece vários benefícios para a empresa, incluindo:
-
--   **Maior eficiência:** O sistema automatiza o processo de devolução de produtos, o que permite que as devoluções sejam processadas mais rapidamente e com mais precisão.
--   **Melhor experiência do cliente:** O sistema oferece aos clientes uma maneira rápida e fácil de solicitar a devolução de produtos. O sistema também fornece aos clientes informações sobre o status de suas devoluções, o que ajuda a reduzir a frustração.
--   **Menores custos:** O sistema automatizado ajuda a reduzir custos ao eliminar a necessidade de trabalho manual. O sistema também ajuda a reduzir custos ao prevenir fraudes e erros.
-
-//Exemplo cima -> Remover após atualizar
+### C) Participantes
+- RM353873 - Kleuber Costa
+- RM354111 - Felipe Oliveira
+- RM354482 - Letícia Oliveira
+- RM354525 - Marcello Caseiro
+- RM355621 - Paulo Bof
 
 
-- **1.3. Domínio e Subdomínio**
-
-//TODO
-
-
-**1.4. Eventos**
-
-//TODO
-
-### 2. Comandos
-
-//TODO
-
-//exemplos abaixo
-
--   **Comando "Solicitar Devolução":** Enviado pelo cliente através do sistema para iniciar o processo de devolução.
--   **Comando "Registrar Recebimento":** Registrado pelo funcionário do armazém após o recebimento do produto devolvido.
--   **Comando "Aprovar Devolução":** Enviado por um funcionário autorizado após a análise do motivo e condição do produto.
--   **Comando "Reembolsar Cliente":** Enviado para o sistema financeiro para processar o reembolso do cliente após a aprovação da devolução.
-
-###  3. Agregados
-
--   **Pedido:** O agregado Pedido pode gerenciar o histórico e informações do pedido associado à devolução.
--   **Produto:** O agregado Produto pode gerenciar informações do produto devolvido, incluindo quantidade e detalhes do item.
--   **Devolução:** O agregado Devolução pode ser o principal responsável por gerenciar o processo de devolução, incluindo o motivo, status, itens devolvidos e histórico de eventos relacionados.
-
-###  4. Fluxo do Processo
-
-//TODO
-
-
-###  5. Backlog
-
-//TODO
-
-Durante o desenvolvimento de um projeto, é comum encontrar tarefas que ainda não foram concluídas, seja por questões de prioridade ou por exigirem mais tempo e esforço. Para organizar e priorizar essas pendências, criamos o backlog. Abaixo estão algumas das tarefas planejadas para serem desenvolvidas no futuro:
-
--   Criação dos Map Struct para mapear objetos de DTO para Entity, e vice-versa.
--   Criação da camada de Serviço de toda implementação de regra de negócio, utilizando alguns Design Parterns como Strategy, entre outros.
--   Criação de Interface de Serviço.
--   Criação de Interface de Controller.
--   Definir e Viabilizar como será o recebimento do retorno da central de análise de produto.
-
-## C) Participantes
-
--   RM353873 - Kleuber Costa
--   RM354111 - Felipe Oliveira
--   RM354482 - Letícia Oliveira
--   RM354525 - Marcello Caseiro
--   RM355621 - Paulo Bof
