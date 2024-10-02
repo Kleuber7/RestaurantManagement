@@ -132,7 +132,8 @@ make integration-test
 
 Testes de Sistema:
 Esses testes garantem que o sistema como um todo esteja funcionando de maneira correta em um ambiente que simule o de
-produção. O cucumber com bdd estao testando o fluxo d ponta a ponta
+produção. O cucumber com bdd estao testando o fluxo d ponta a ponta.
+
 
 - Para executar os testes de sistema, utilize o seguinte comando:
 - OBS: Para executar os testes de sistemas é preciso que a API esteja rodando
@@ -141,6 +142,12 @@ produção. O cucumber com bdd estao testando o fluxo d ponta a ponta
 make system-test
  ```
 ![Cucumber](document/images/cucumber.png)
+
+### Github actions
+
+Realizamos também uma esteira de testes automatizados com o Github actions criando pipeline de CI/CD.
+
+![Cucumber](document/images/githubactions.png)
 
 
 ## Testes Não Funcionais:
@@ -188,9 +195,20 @@ como:
 - Manutenção dos testes: Para garantir a qualidade contínua do código, é importante que os testes unitários sejam sempre
   executados após qualquer modificação no código.
 
-## Medir cobertura de teste:
+## Cobertura de testes:
+
+Aqui uma demostrção da cobertura de testes unitários e integração da aplicação:
+
+![Cobertura de testes](document/images/cobertura.png)
 
 ## Deploy:
+
+O sistema foi hospedado na nuvem da Railway
+- URL na Railway [URL da API para se usar o POSTMAN](https://restaurantmanagement-production-ff9d.up.railway.app)
+
+![nuvem](document/images/nuvem.png)
+
+
 
 ### C) Participantes
 
