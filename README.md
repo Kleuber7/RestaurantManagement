@@ -219,7 +219,8 @@ Aqui uma demostrção da cobertura de testes unitários e integração da aplica
 ## Deploy:
 
 O sistema foi hospedado na nuvem da Railway
-- URL na Railway [URL da API para se usar o POSTMAN](https://restaurantmanagement-production-ff9d.up.railway.app)
+- URL na Railway (CLOUD): https://restaurantmanagement-production-ff9d.up.railway.app
+- Exemplo de requisição: https://restaurantmanagement-production-ff9d.up.railway.app/customer
 
 ![nuvem](document/images/nuvem.png)
 
