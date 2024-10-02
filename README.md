@@ -70,6 +70,21 @@ atender tanto clientes quanto administradores.
    ```shell
    java -jar target/RestaurantManagement-1.0-SNAPSHOT.jar
    ```
+9. **Docker:** para subir os container Dokers basta seguir os comandos:
+
+- Para buildar a imagem
+````shell
+make docker-build
+
+````
+- Para subir os containers
+````shell
+make docker-start
+````
+- Para encerrar os containers
+````shell
+make docker-stop
+````
 
 # Design Arquitetônico:
 
