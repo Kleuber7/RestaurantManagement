@@ -86,6 +86,8 @@ Assim estão distribuidos os pacotes da aplicação:
 
 ### Diagrama de arquitetura aplicada ao projeto
 
+![Diagrama de arquitetura](document/images/arquitetura.png)
+
 ----
 
 # Qualidade de Software:
@@ -130,7 +132,7 @@ make integration-test
 
 Testes de Sistema:
 Esses testes garantem que o sistema como um todo esteja funcionando de maneira correta em um ambiente que simule o de
-produção.
+produção. O cucumber com bdd estao testando o fluxo d ponta a ponta
 
 - Para executar os testes de sistema, utilize o seguinte comando:
 - OBS: Para executar os testes de sistemas é preciso que a API esteja rodando
@@ -138,6 +140,8 @@ produção.
 ```shell
 make system-test
  ```
+![Cucumber](document/images/cucumber.png)
+
 
 ## Testes Não Funcionais:
 
@@ -149,6 +153,8 @@ make system-test
 ```shell
 make performance-test
  ```
+
+![Gatllin](document/images/gattlin.png)
 
 ## Executando todos os testes
 
@@ -170,6 +176,7 @@ Gerar relatório de testes.
 ```shell
 allure serve target/allure-results
  ```
+![Allure](document/images/allure.png)
 
 Estrutura do relatório: O relatório gerado pelo Allure fornece uma visão geral dos testes executados, incluindo métricas
 como:
