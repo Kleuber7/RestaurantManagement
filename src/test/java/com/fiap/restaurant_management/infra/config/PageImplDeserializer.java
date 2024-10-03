@@ -3,7 +3,7 @@ package com.fiap.restaurant_management.infra.config;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fiap.restaurant_management.infra.dto.BookingDto;
+import com.fiap.restaurant_management.interfaces.dto.BookingDto;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

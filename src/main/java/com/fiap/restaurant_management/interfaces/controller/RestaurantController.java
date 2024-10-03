@@ -1,4 +1,4 @@
-package com.fiap.restaurant_management.infra.controller;
+package com.fiap.restaurant_management.interfaces.controller;
 
 import com.fiap.restaurant_management.aplication.usecases.restaurant.CreateRestaurant;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantByCep;
@@ -6,8 +6,8 @@ import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaur
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantBycuisineType;
 import com.fiap.restaurant_management.domain.entities.Restaurant;
 import com.fiap.restaurant_management.domain.valueobjects.Location;
-import com.fiap.restaurant_management.infra.controller.mapper.RestaurantMapperDto;
-import com.fiap.restaurant_management.infra.dto.*;
+import com.fiap.restaurant_management.interfaces.controller.mapper.RestaurantMapperDto;
+import com.fiap.restaurant_management.interfaces.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

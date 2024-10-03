@@ -1,7 +1,7 @@
 package com.fiap.restaurant_management.bdd_cucumber_test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fiap.restaurant_management.infra.dto.CustomerDto;
+import com.fiap.restaurant_management.interfaces.dto.CustomerDto;
 import com.fiap.restaurant_management.templateDto.CustomerTemplateDto;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;

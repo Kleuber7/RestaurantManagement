@@ -1,13 +1,13 @@
 package com.fiap.restaurant_management.integrationTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fiap.restaurant_management.infra.dto.*;
 import com.fiap.restaurant_management.infra.persistence.entities.CustomerEntity;
 import com.fiap.restaurant_management.infra.persistence.entities.RestaurantEntity;
 import com.fiap.restaurant_management.infra.persistence.repository.BookingRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
 import com.fiap.restaurant_management.infra.persistence.repository.ReviewRepository;
+import com.fiap.restaurant_management.interfaces.dto.*;
 import com.fiap.restaurant_management.templateDto.BookingTemplateDto;
 import com.fiap.restaurant_management.templateDto.CustomerTemplateDto;
 import com.fiap.restaurant_management.templateDto.RestaurantTemplateDto;

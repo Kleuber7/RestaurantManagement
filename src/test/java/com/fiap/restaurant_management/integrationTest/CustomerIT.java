@@ -1,7 +1,7 @@
 package com.fiap.restaurant_management.integrationTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fiap.restaurant_management.infra.dto.CustomerDto;
+import com.fiap.restaurant_management.interfaces.dto.CustomerDto;
 import com.fiap.restaurant_management.infra.persistence.repository.CustomerRepository;
 import com.fiap.restaurant_management.templateDto.CustomerTemplateDto;
 import io.qameta.allure.Severity;

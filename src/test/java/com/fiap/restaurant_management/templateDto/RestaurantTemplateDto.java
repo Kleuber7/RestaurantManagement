@@ -1,7 +1,7 @@
 package com.fiap.restaurant_management.templateDto;
 
-import com.fiap.restaurant_management.infra.dto.LocationDto;
-import com.fiap.restaurant_management.infra.dto.RestaurantDto;
+import com.fiap.restaurant_management.interfaces.dto.LocationDto;
+import com.fiap.restaurant_management.interfaces.dto.RestaurantDto;
 
 import java.time.LocalTime;
 

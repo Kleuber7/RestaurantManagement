@@ -1,6 +1,6 @@
 package com.fiap.restaurant_management.templateDto;
 
-import com.fiap.restaurant_management.infra.dto.CustomerDto;
+import com.fiap.restaurant_management.interfaces.dto.CustomerDto;
 
 public class CustomerTemplateDto {
 

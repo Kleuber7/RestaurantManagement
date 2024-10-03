@@ -1,4 +1,4 @@
-package com.fiap.restaurant_management.infra.dto;
+package com.fiap.restaurant_management.interfaces.dto;
 
 import lombok.Builder;
 

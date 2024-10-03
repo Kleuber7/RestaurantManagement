@@ -1,6 +1,6 @@
 package com.fiap.restaurant_management.templateDto;
 
-import com.fiap.restaurant_management.infra.dto.ReviewDto;
+import com.fiap.restaurant_management.interfaces.dto.ReviewDto;
 
 public class ReviewTemplateDto {
 

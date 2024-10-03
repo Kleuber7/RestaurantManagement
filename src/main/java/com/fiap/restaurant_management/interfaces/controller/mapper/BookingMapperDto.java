@@ -1,7 +1,7 @@
-package com.fiap.restaurant_management.infra.controller.mapper;
+package com.fiap.restaurant_management.interfaces.controller.mapper;
 
 import com.fiap.restaurant_management.domain.entities.Booking;
-import com.fiap.restaurant_management.infra.dto.BookingDto;
+import com.fiap.restaurant_management.interfaces.dto.BookingDto;
 
 public class BookingMapperDto {
 

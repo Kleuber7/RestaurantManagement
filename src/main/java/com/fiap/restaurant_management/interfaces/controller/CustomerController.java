@@ -1,9 +1,9 @@
-package com.fiap.restaurant_management.infra.controller;
+package com.fiap.restaurant_management.interfaces.controller;
 
 import com.fiap.restaurant_management.aplication.usecases.customer.CreateCustomer;
 import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
 import com.fiap.restaurant_management.domain.entities.Customer;
-import com.fiap.restaurant_management.infra.dto.CustomerDto;
+import com.fiap.restaurant_management.interfaces.dto.CustomerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -6,7 +6,7 @@ import com.fiap.restaurant_management.aplication.gateway.IReviewRepository;
 import com.fiap.restaurant_management.aplication.usecases.review.CreateReview;
 import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantById;
-import com.fiap.restaurant_management.infra.controller.ReviewController;
+import com.fiap.restaurant_management.interfaces.controller.ReviewController;
 import com.fiap.restaurant_management.infra.gateways.ReviewRepositoryImpl;
 import com.fiap.restaurant_management.infra.mapper.CustomerMapper;
 import com.fiap.restaurant_management.infra.mapper.RestaurantMapper;

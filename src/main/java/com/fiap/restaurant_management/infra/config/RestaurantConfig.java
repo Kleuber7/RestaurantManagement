@@ -5,9 +5,9 @@ import com.fiap.restaurant_management.aplication.usecases.restaurant.CreateResta
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantByCep;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantByName;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantBycuisineType;
-import com.fiap.restaurant_management.infra.controller.RestaurantController;
-import com.fiap.restaurant_management.infra.controller.mapper.LocationMapperDto;
-import com.fiap.restaurant_management.infra.controller.mapper.RestaurantMapperDto;
+import com.fiap.restaurant_management.interfaces.controller.RestaurantController;
+import com.fiap.restaurant_management.interfaces.controller.mapper.LocationMapperDto;
+import com.fiap.restaurant_management.interfaces.controller.mapper.RestaurantMapperDto;
 import com.fiap.restaurant_management.infra.gateways.RestaurantRepositoryImpl;
 import com.fiap.restaurant_management.infra.mapper.LocationMapper;
 import com.fiap.restaurant_management.infra.mapper.RestaurantMapper;

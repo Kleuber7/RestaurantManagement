@@ -3,9 +3,9 @@ package com.fiap.restaurant_management.integrationTest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fiap.restaurant_management.infra.dto.LocationCepDto;
-import com.fiap.restaurant_management.infra.dto.RestaurantDto;
-import com.fiap.restaurant_management.infra.dto.RestaurantNameDto;
+import com.fiap.restaurant_management.interfaces.dto.LocationCepDto;
+import com.fiap.restaurant_management.interfaces.dto.RestaurantDto;
+import com.fiap.restaurant_management.interfaces.dto.RestaurantNameDto;
 import com.fiap.restaurant_management.infra.persistence.repository.RestaurantRepository;
 import com.fiap.restaurant_management.templateDto.RestaurantTemplateDto;
 import io.qameta.allure.Severity;

@@ -1,10 +1,10 @@
-package com.fiap.restaurant_management.infra.controller;
+package com.fiap.restaurant_management.interfaces.controller;
 
 import com.fiap.restaurant_management.aplication.usecases.review.CreateReview;
 import com.fiap.restaurant_management.aplication.usecases.customer.FindCustomerById;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantById;
 import com.fiap.restaurant_management.domain.entities.Review;
-import com.fiap.restaurant_management.infra.dto.ReviewDto;
+import com.fiap.restaurant_management.interfaces.dto.ReviewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

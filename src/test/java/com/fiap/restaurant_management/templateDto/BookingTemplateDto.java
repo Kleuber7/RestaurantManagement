@@ -1,6 +1,6 @@
 package com.fiap.restaurant_management.templateDto;
 
-import com.fiap.restaurant_management.infra.dto.BookingDto;
+import com.fiap.restaurant_management.interfaces.dto.BookingDto;
 
 import java.time.LocalDateTime;
 

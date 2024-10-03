@@ -1,16 +1,12 @@
 package com.fiap.restaurant_management.unit_test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fiap.restaurant_management.aplication.gateway.IRestaurantRepository;
 import com.fiap.restaurant_management.aplication.usecases.restaurant.CreateRestaurant;
-import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantByCep;
-import com.fiap.restaurant_management.aplication.usecases.restaurant.FindRestaurantBycuisineType;
 import com.fiap.restaurant_management.domain.entities.Restaurant;
 import com.fiap.restaurant_management.domain.valueobjects.Location;
-import com.fiap.restaurant_management.infra.controller.RestaurantController;
-import com.fiap.restaurant_management.infra.dto.RestaurantDto;
+import com.fiap.restaurant_management.interfaces.controller.RestaurantController;
+import com.fiap.restaurant_management.interfaces.dto.RestaurantDto;
 import com.fiap.restaurant_management.templateDto.RestaurantTemplateDto;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -1,7 +1,7 @@
-package com.fiap.restaurant_management.infra.controller.mapper;
+package com.fiap.restaurant_management.interfaces.controller.mapper;
 
 import com.fiap.restaurant_management.domain.valueobjects.Location;
-import com.fiap.restaurant_management.infra.dto.LocationDto;
+import com.fiap.restaurant_management.interfaces.dto.LocationDto;
 
 public class LocationMapperDto {
 
